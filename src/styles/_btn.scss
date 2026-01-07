@@ -1,0 +1,59 @@
+.ant-btn-default {
+  background-color: $member-button-color;
+  color: white;
+  span {
+    color: white;
+  }
+}
+.ant-btn-default:hover {
+  background-color: $member-button-color;
+  color: white;
+  span:hover {
+    color: white;
+  }
+}
+
+.ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+  color: white;
+  border: none;
+}
+:where(.css-dev-only-do-not-override-6j9yrn).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  color: white;
+}
+// .btn-extra {
+.btn-extra span {
+  color: #707070;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+.btn-extra span:hover {
+  color: #707070 !important;
+}
+
+.updateButton {
+  background-color: $member-button-color !important;
+}
+.btn-outline {
+  border: 1px solid $member-button-color;
+  background-color: transparent;
+  margin-inline: 5px;
+  margin-right: 5px;
+  span {
+    color: $member-button-color;
+  }
+}
+.btn-outline:hover {
+  border: 1px solid $member-button-color !important;
+  background-color: transparent;
+  span {
+    color: $member-button-color !important;
+  }
+}
+
+// }

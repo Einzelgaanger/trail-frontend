@@ -1,0 +1,68 @@
+.content-wrapper {
+  width: initial;
+
+  .ant-tabs {
+    min-width: 100%;
+  }
+  .ant-tabs > .ant-tabs-nav {
+    max-width: fit-content;
+  }
+
+  .ant-tabs-nav-wrap {
+    border-radius: 48px;
+    border: 1px solid #e4e7ec;
+    background: #fff;
+    padding-inline: 10px;
+    // width: 70%;
+  }
+  div.ant-tabs-tab.ant-tabs-tab-active {
+    padding: 5px 0px;
+  }
+
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $member-button-color;
+  }
+
+  .ant-tabs-tab-active .ant-tabs-tab-btn {
+    border-radius: 40px;
+    background: $tabs-background-color;
+    color: $member-button-color;
+    padding-inline: 24px;
+    padding-block: 10px;
+  }
+}
+
+.custom-tab {
+  padding-top: 2px;
+  .ant-tabs {
+    min-width: 100%;
+    padding-block: 0px;
+    margin-block: 0px;
+  }
+  .ant-tabs > .ant-tabs-nav {
+    max-width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .ant-tabs-nav-wrap {
+    border: none;
+    border-radius: 2px;
+    background: #fff;
+    padding-inline: 5px;
+    padding-left: 10px;
+    // width: 70%;
+  }
+  // div.ant-tabs-tab.ant-tabs-tab-active {
+  // }
+
+  // .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  // }
+
+  .ant-tabs-tab-active .ant-tabs-tab-btn {
+    border-radius: none;
+    background: none;
+    color: $member-button-color;
+    padding-inline: 5px;
+    padding-block: 2px;
+  }
+}

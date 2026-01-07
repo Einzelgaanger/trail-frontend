@@ -1,0 +1,266 @@
+.content-wrapper {
+  width: initial;
+}
+.profile-container {
+  //   width: 100%;
+  background: #fff;
+  padding: 2em;
+  margin-right: 20px;
+  .ant-btn-default {
+    background-color: $member-button-color;
+    color: white;
+  }
+  .ant-btn-default:hover {
+    background-color: $member-button-color;
+    color: white;
+    border: none;
+  }
+  .ant-btn-default span:hover {
+    color: white;
+  }
+  .profileBox {
+    // width: 100%;
+    background: #fff;
+    // padding-inline: 0;
+
+    box-sizing: border-box;
+  }
+  .profileSection {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e4e7ec;
+
+    //   padding: 2em;
+    //   padding-left: 3em;
+    //   padding-right: 3em;
+    //   box-sizing: border-box;
+    .item1 {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 30px;
+    }
+    .edit-btn {
+      align-self: flex-end;
+      .btn-link {
+        color: white;
+      }
+    }
+  }
+  .profileDetails {
+    width: 100%;
+    background-color: #fff;
+
+    box-sizing: border-box;
+    padding-block: 20px;
+    border-bottom: 1px solid #e4e7ec;
+
+    .profile_div {
+      display: flex;
+      flex-direction: column;
+      word-wrap: break-word;
+      color: #4b4b4b;
+
+      /* 171.429% */
+    }
+  }
+  .dContent {
+    margin-top: 2rem;
+
+    .dTop {
+      display: flex;
+      gap: 10px;
+
+      input[type="radio"] {
+        accent-color: $member-button-color;
+      }
+
+      .radioStyle {
+        width: 18px;
+        height: 18px;
+        align-self: center;
+      }
+
+      .accStyle {
+        // align-self: center;
+
+        .h4Style {
+          font-weight: bold;
+          margin: 0;
+          padding: 0;
+        }
+        .pStyle {
+          width: 100%;
+          padding-top: 0px;
+        }
+      }
+    }
+    .pStyle2 {
+      width: 100%;
+    }
+    .popModalStyle {
+      margin-left: 2.5rem;
+      margin-top: 2.5rem;
+      .ant-btn-default:hover {
+        color: white;
+      }
+      .ant-btn-default span:hover {
+        color: white;
+      }
+    }
+  }
+}
+.dashboard-card {
+  width: 100%;
+  .ant-input-group-wrapper {
+    border: none !important;
+
+    .ant-input-group,
+    .ant-input-affix-wrapper {
+      height: 40px;
+    }
+    .ant-input-group .ant-input {
+      height: 40px;
+    }
+    // .ant-input-affix-wrapper {
+
+    // }
+  }
+  .ant-btn-d {
+    background-color: $member-button-color;
+  }
+  .profileSection {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #e4e7ec;
+
+    .item1 {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 30px;
+    }
+    .edit-btn {
+      align-self: flex-end;
+      .delete {
+        margin-right: 20px;
+        color: #f64c4c;
+      }
+      .btn-link {
+        color: white;
+      }
+    }
+  }
+  .btn-outline {
+    border: 1px solid $member-button-color;
+    background-color: transparent;
+    margin-inline: 5px;
+    margin-right: 5px;
+    span {
+      color: $member-button-color;
+    }
+  }
+  .btn-outline:hover {
+    border: 1px solid $member-button-color !important;
+    background-color: transparent;
+    span {
+      color: $member-button-color !important;
+    }
+  }
+}
+.inputStyle {
+  height: 40px;
+  font-size: 0.9rem;
+  border-color: #d7dce0;
+  border: 1px solid #d7dce0;
+}
+
+.Modal-span {
+  margin-right: 20px;
+}
+.role-card {
+  background-color: #f7f7f7;
+}
+.ant-modal-footer {
+  .ant-btn-default {
+    background-color: $member-button-color;
+  }
+}
+
+.ant-checkbox-group label:nth-child(n) {
+  border: none;
+}
+.ant-checkbox-group {
+  border: none !important;
+}
+.rolePermVisible {
+  display: flex;
+  // flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 10px;
+
+  // overflow-x: hidden;
+  h3 {
+    color: #4b4b4b;
+
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+}
+.search-margin {
+  margin-bottom: 10px;
+}
+.ant-modal-content {
+  .ant-modal-title {
+    color: #333;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 120% */
+  }
+}
+
+.modal-container {
+  overflow: scroll;
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3 {
+      color: #4b4b4b;
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px; /* 150% */
+    }
+  }
+  .hideForm {
+    display: none;
+  }
+  .showForm {
+    display: block;
+  }
+  .entity-btn {
+    background-color: #fff;
+    border: 1px solid $member-button-color;
+    span {
+      color: $member-button-color;
+    }
+  }
+  .entity-btn:hover {
+    background-color: #fff;
+    border: 1px solid $member-button-color !important;
+    span {
+      color: $member-button-color !important;
+    }
+  }
+}
