@@ -1,0 +1,165 @@
+Hello Team,
+
+Thanks for sharing the Trail demo. For DBN, we need the prototype to resemble an “ESG Integrated Solution Dashboard” - meaning it must display end-to-end ESG operationalisation, not just SDG/Programme monitoring.  
+
+1) What does the “ESG Integrated Solution” mean (DBN view)
+The prototype must show that the system can support the full ESG cycle:
+
+Collect ESG data (PFI submissions - Excel import is OK)
+
+Validate & govern the data (quality checks, error log, approval workflow, audit trail)
+
+Classify projects using DBN Green Taxonomy (Green / Transition / Not Green + evidence)
+
+Track carbon & Net Zero (Scope 1/2/3 totals, basic calculation logic, targets & progress)
+
+Generate ESG reports (exportable packs for DBN management + PFI compliance summary)
+
+If these 5 are visible, DBN will see a “true integrated solution.”
+
+2) What to keep from Trail
+Keep your existing structure (menus, tables, reporting pages, forms management, import data, filters, export buttons). We want you to repurpose the content, not rebuild the app.
+
+3) What to change/replace (high-level)
+Your current views look like:
+
+Program/beneficiary tracking
+
+General “reports” (program/event/form reports)
+
+Goals/KPIs for programmes
+
+Some “business performance” style charts
+
+For the DBN PoC, please replace these content types with ESG + PFI reporting + taxonomy + carbon.
+
+Specifically:
+
+Replace “beneficiaries/events/speakers/attendees” with projects, PFIs, ESG submissions, compliance status, taxonomy status, and carbon figures.
+
+Replace “revenue/cash trend” type analytics with ESG data completeness, reporting timeliness, green portfolio %, and emissions trend.
+
+4) What the prototype MUST include (6 modules max)
+Please implement these 6 modules only (keep it clean and non-confusing):
+
+Module A - Portfolio Overview (Executive Snapshot)
+Goal: 10-second view of portfolio ESG position.
+Show max 6 KPIs:
+
+Portfolio Value (₦) + #Projects
+Total financed amount and number of facilities/projects tracked.
+
+ESG Data Completeness %
+% of required ESG fields submitted and validated.
+
+PFI Reporting Timeliness (On-time vs Late)
+Which PFIs complied with reporting deadlines.
+
+Green Taxonomy Classified % (by portfolio value)
+% of portfolio classified Green/Transition/Not Green.
+
+Carbon Summary (Scope 1 / 2 / 3 totals)
+tCO₂e totals - sample values acceptable for PoC.
+
+Top ESG Flags (RAG)
+Count of red/amber/green flags based on missing data, failed validations, missing evidence, and high-risk sectors.
+
+Module B - Portfolio Drilldown (Projects/Facilities Register)
+Goal: DBN can drill into PFIs/projects.
+Minimum fields per project:
+
+Project ID, PFI name, sector, location (state), amount, dates
+
+Taxonomy status: Green / Transition / Not Green
+
+ESG status: Complete / Incomplete + RAG
+
+Carbon status: Scope 1/2/3 present? (Y/N)
+
+Module C - PFI Submissions (Excel Import + Validation + Approval) (core of “integrated”)
+You already have Forms Management + Import Data - repurpose it into PFI submissions.
+
+Required features:
+
+Upload/Import Excel (PFI ESG template)
+
+System runs validations → generates Error Log table
+
+Status workflow: Draft → Submitted → Validated → Approved → Published
+
+Include a Data Quality Score per PFI (e.g., 92%, 76%) driven by validation results
+
+Error Log table columns (minimum):
+
+Field | Issue | Row/Record ID | Severity | Status | Action
+
+Module D - Green Taxonomy Classification
+Goal: Show the DBN taxonomy digitised in the system.
+Must include:
+
+Simple “taxonomy rules” table (Category, Criteria/threshold, evidence required)
+
+Classification output per project: Green / Transition / Not Green
+
+Evidence status: Provided / Missing (file upload placeholder is fine)
+
+Module E - Carbon & Net Zero
+Goal: Show that carbon accounting and target tracking exist.
+Must include:
+
+Portfolio and project-level Scope 1 / 2 / 3 totals
+
+Simple calculation logic: Activity Data × Emission Factor = tCO₂e (PoC-level)
+
+Targets: baseline year, target year, target %, progress bar
+
+Module F - Reports / Export
+Keep it minimal:
+
+Button 1: Export DBN ESG Portfolio Pack (PDF)
+
+Button 2: Export PFI Compliance Summary (Excel)
+
+Optional Button 3: Export Carbon & Net Zero Summary (PDF)
+
+5) What to REMOVE / De-prioritize for this PoC
+To keep it fast and focused:
+
+Remove “Event Reports” (speakers/attendees etc.) - not relevant
+
+Remove beneficiary satisfaction surveys unless you can directly repurpose into “PFI ESG submissions”
+
+Avoid adding too many SDG pages - SDG should be one widget layer, not the whole product
+
+6) Dataset requirement (so the PoC feels real)
+Please use one consistent sample dataset across modules (same project IDs).
+Minimum dataset fields:
+
+Project ID, PFI, Sector, State, Amount, Start/End dates
+
+SDG tags (top 5)
+
+ESG completeness %, timeliness status
+
+Taxonomy classification + evidence status
+
+Scope 1/2/3 emissions + baseline + target + current
+
+7) Naming updates (DBN language)
+Please rename menus so DBN users relate instantly:
+
+Programmes → Projects / Facilities
+
+Goals & Indicators → ESG Metrics & Standards
+
+Forms Management → PFI Submissions
+
+Insights → ESG Analytics
+
+Reports → Reports (keep)
+
+8) PoC success criteria (what “done” looks like)
+The PoC is complete when we can show, in one continuous walkthrough:
+Overview → project drilldown → PFI Excel upload → validation errors → approve/publish → taxonomy status → carbon view → export report.
+
+Thank you

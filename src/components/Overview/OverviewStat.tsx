@@ -1,151 +1,54 @@
 import React from "react";
 import { Row, Col } from "antd";
+import { DollarOutlined, CheckCircleOutlined, ClockCircleOutlined, EnvironmentOutlined, FireOutlined, WarningOutlined } from "@ant-design/icons";
 
-interface Props {
-  //   budgetAndBeneficiaries?: IBudgetAndBeneficiaries;
-  //   programs?: [];
-  //   calculateSize: any;
-}
+export const OverviewStat: React.FC = () => {
+  const mockESGData = {
+    portfolioValue: 12500000000,
+    projectCount: 42,
+    esgCompleteness: 87,
+    reportingTimeliness: { onTime: 38, late: 4, total: 42 },
+    greenTaxonomy: { green: 65 },
+    carbonSummary: { total: 53300 },
+    esgFlags: { red: 3, amber: 7, green: 32 }
+  };
 
-export const OverviewStat: React.FC<Props> = ({}) => {
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-NG', {
+      style: 'currency', currency: 'NGN', minimumFractionDigits: 0,
+    }).format(value);
+  };
+
   return (
-    <Row gutter={[8, 8]} className="overview-stat controlBoard">
-      <Col xs={{ span: 24 }} lg={{ span: 6 }}>
-        {/* <div className="action1">
-          <div className="upAction1">
-            <h4>{programs?.length}</h4>
-            <span>No of Programmes</span>
-          </div>
-          <div className="icon1">
-            <svg
-              width="24"
-              height="20"
-              className="iconStyle1"
-              viewBox="0 0 24 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9 0C7.896 0 7 0.896 7 2V4H9V2.5C9 2.224 9.224 2 9.5 2H14.5C14.776 2 15 2.224 15 2.5V4H17V2C17 0.896 16.104 0 15 0H9ZM21.561 12L20.361 18H3.64L2.44 12H21.561ZM24 10H0L2 20H22L24 10ZM23 5V8H21V7H3V8H1V5H23Z"
-                fill="#1354D3"
-              />
-            </svg>
-          </div>
-        </div> */}
+    <Row gutter={[16, 16]} className="overview-stat controlBoard">
+      <Col xs={24} lg={8}>
         <div className="dashboard-tab">
           <div className="flex-tab">
-            <div className="stat-title">
-              <span>No. of programs</span>
-            </div>
-            <div className="stat-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <g clipPath="url(#clip0_3892_2413)">
-                  <path
-                    d="M17.4992 15.8333H19.1659V17.5H0.83252V15.8333H2.49919V3.33333C2.49919 3.11232 2.58698 2.90036 2.74326 2.74408C2.89954 2.5878 3.11151 2.5 3.33252 2.5H11.6659C11.8869 2.5 12.0988 2.5878 12.2551 2.74408C12.4114 2.90036 12.4992 3.11232 12.4992 3.33333V15.8333H15.8325V9.16667H14.1659V7.5H16.6659C16.8869 7.5 17.0988 7.5878 17.2551 7.74408C17.4114 7.90036 17.4992 8.11232 17.4992 8.33333V15.8333ZM4.16585 4.16667V15.8333H10.8325V4.16667H4.16585ZM5.83252 9.16667H9.16585V10.8333H5.83252V9.16667ZM5.83252 5.83333H9.16585V7.5H5.83252V5.83333Z"
-                    fill="#1354D3"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_3892_2413">
-                    <rect width="20" height="20" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
+            <span className="stat-title">Portfolio Value</span>
+            <DollarOutlined style={{ color: '#1354D3', fontSize: '20px' }} />
           </div>
-          <div>
-            <h1>04</h1>
-          </div>
+          <h1>{formatCurrency(mockESGData.portfolioValue)}</h1>
+          <p>{mockESGData.projectCount} Projects/Facilities</p>
         </div>
       </Col>
-      <Col xs={{ span: 24 }} lg={{ span: 6 }}>
+      <Col xs={24} lg={8}>
         <div className="dashboard-tab">
           <div className="flex-tab">
-            <div className="stat-title">
-              <span>No. of programs</span>
-            </div>
-            <div className="stat-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d="M12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15Z"
-                  fill="#D66F0F"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M12 3C12.2652 3 12.5196 3.10536 12.7071 3.29289C12.8946 3.48043 13 3.73478 13 4V5.07C14.496 5.28623 15.8818 5.98059 16.9506 7.04939C18.0194 8.11818 18.7138 9.50405 18.93 11H20C20.2652 11 20.5196 11.1054 20.7071 11.2929C20.8946 11.4804 21 11.7348 21 12C21 12.2652 20.8946 12.5196 20.7071 12.7071C20.5196 12.8946 20.2652 13 20 13H18.93C18.7138 14.496 18.0194 15.8818 16.9506 16.9506C15.8818 18.0194 14.496 18.7138 13 18.93V20C13 20.2652 12.8946 20.5196 12.7071 20.7071C12.5196 20.8946 12.2652 21 12 21C11.7348 21 11.4804 20.8946 11.2929 20.7071C11.1054 20.5196 11 20.2652 11 20V18.93C9.50405 18.7138 8.11818 18.0194 7.04939 16.9506C5.98059 15.8818 5.28623 14.496 5.07 13H4C3.73478 13 3.48043 12.8946 3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929C3.48043 11.1054 3.73478 11 4 11H5.07C5.28638 9.50411 5.9808 8.11833 7.04956 7.04956C8.11833 5.9808 9.50411 5.28638 11 5.07V4C11 3.73478 11.1054 3.48043 11.2929 3.29289C11.4804 3.10536 11.7348 3 12 3ZM7 12C7 10.6739 7.52678 9.40215 8.46447 8.46447C9.40215 7.52678 10.6739 7 12 7C13.3261 7 14.5979 7.52678 15.5355 8.46447C16.4732 9.40215 17 10.6739 17 12C17 13.3261 16.4732 14.5979 15.5355 15.5355C14.5979 16.4732 13.3261 17 12 17C10.6739 17 9.40215 16.4732 8.46447 15.5355C7.52678 14.5979 7 13.3261 7 12Z"
-                  fill="#D66F0F"
-                />
-              </svg>
-            </div>
+            <span className="stat-title">ESG Completeness</span>
+            <CheckCircleOutlined style={{ color: '#27BE63', fontSize: '20px' }} />
           </div>
-          <div>
-            <h1>04</h1>
-          </div>
+          <h1>{mockESGData.esgCompleteness}%</h1>
+          <p>Fields validated</p>
         </div>
       </Col>
-      <Col xs={{ span: 24 }} lg={{ span: 6 }}>
+      <Col xs={24} lg={8}>
         <div className="dashboard-tab">
           <div className="flex-tab">
-            <div className="stat-title">
-              <span>No. of programs</span>
-            </div>
-            <div className="stat-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d="M13.07 10.41C13.6774 9.56125 14.0041 8.54371 14.0041 7.49999C14.0041 6.45628 13.6774 5.43873 13.07 4.58999C13.6385 4.20195 14.3117 3.99616 15 3.99999C15.9283 3.99999 16.8185 4.36874 17.4749 5.02512C18.1313 5.6815 18.5 6.57173 18.5 7.49999C18.5 8.42825 18.1313 9.31849 17.4749 9.97486C16.8185 10.6312 15.9283 11 15 11C14.3117 11.0038 13.6385 10.798 13.07 10.41ZM5.5 7.49999C5.5 6.80776 5.70527 6.13107 6.08986 5.5555C6.47444 4.97992 7.02107 4.53132 7.66061 4.26641C8.30015 4.00151 9.00388 3.93219 9.68282 4.06724C10.3617 4.20229 10.9854 4.53563 11.4749 5.02512C11.9644 5.5146 12.2977 6.13824 12.4327 6.81718C12.5678 7.49611 12.4985 8.19984 12.2336 8.83938C11.9687 9.47892 11.5201 10.0256 10.9445 10.4101C10.3689 10.7947 9.69223 11 9 11C8.07174 11 7.1815 10.6312 6.52513 9.97486C5.86875 9.31849 5.5 8.42825 5.5 7.49999ZM7.5 7.49999C7.5 7.79666 7.58797 8.08667 7.7528 8.33335C7.91762 8.58002 8.15189 8.77228 8.42597 8.88581C8.70006 8.99934 9.00166 9.02905 9.29264 8.97117C9.58361 8.91329 9.85088 8.77043 10.0607 8.56065C10.2704 8.35087 10.4133 8.0836 10.4712 7.79263C10.5291 7.50166 10.4994 7.20006 10.3858 6.92597C10.2723 6.65188 10.08 6.41761 9.83335 6.25279C9.58668 6.08797 9.29667 5.99999 9 5.99999C8.60218 5.99999 8.22064 6.15803 7.93934 6.43933C7.65804 6.72064 7.5 7.10217 7.5 7.49999ZM16 17V19H2V17C2 17 2 13 9 13C16 13 16 17 16 17ZM14 17C13.86 16.22 12.67 15 9 15C5.33 15 4.07 16.31 4 17M15.95 13C16.5629 13.4767 17.064 14.0818 17.4182 14.7729C17.7723 15.4639 17.9709 16.2241 18 17V19H22V17C22 17 22 13.37 15.94 13H15.95Z"
-                  fill="#4431B4"
-                />
-              </svg>
-            </div>
+            <span className="stat-title">Reporting Timeliness</span>
+            <ClockCircleOutlined style={{ color: '#D66F0F', fontSize: '20px' }} />
           </div>
-          <div>
-            <h1>04</h1>
-          </div>
-        </div>
-      </Col>
-      <Col xs={{ span: 24 }} lg={{ span: 6 }}>
-        <div className="dashboard-tab">
-          <div className="flex-tab">
-            <div className="stat-title">
-              <span>No. of programs</span>
-            </div>
-            <div className="stat-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d="M5 3C4.46957 3 3.96086 3.21071 3.58579 3.58579C3.21071 3.96086 3 4.46957 3 5V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V16.72C21.3023 16.5455 21.5536 16.2949 21.7291 15.9932C21.9045 15.6914 21.9979 15.349 22 15V9C21.9979 8.65097 21.9045 8.30857 21.7291 8.00683C21.5536 7.70509 21.3023 7.45451 21 7.28V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H5ZM5 5H19V7H13C12.4696 7 11.9609 7.21071 11.5858 7.58579C11.2107 7.96086 11 8.46957 11 9V15C11 15.5304 11.2107 16.0391 11.5858 16.4142C11.9609 16.7893 12.4696 17 13 17H19V19H5V5ZM13 9H20V15H13V9ZM16 10.5C15.6022 10.5 15.2206 10.658 14.9393 10.9393C14.658 11.2206 14.5 11.6022 14.5 12C14.5 12.3978 14.658 12.7794 14.9393 13.0607C15.2206 13.342 15.6022 13.5 16 13.5C16.3978 13.5 16.7794 13.342 17.0607 13.0607C17.342 12.7794 17.5 12.3978 17.5 12C17.5 11.6022 17.342 11.2206 17.0607 10.9393C16.7794 10.658 16.3978 10.5 16 10.5Z"
-                  fill="#27BE63"
-                />
-              </svg>
-            </div>
-          </div>
-          <div>
-            <h1>04</h1>
-          </div>
+          <h1>{((mockESGData.reportingTimeliness.onTime / mockESGData.reportingTimeliness.total) * 100).toFixed(0)}%</h1>
+          <p>{mockESGData.reportingTimeliness.onTime} On-time / {mockESGData.reportingTimeliness.late} Late</p>
         </div>
       </Col>
     </Row>
