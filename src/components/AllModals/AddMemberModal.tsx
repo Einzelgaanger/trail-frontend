@@ -37,7 +37,7 @@ const AddMemberModal = ({
         </span>,
         <ButtonComponent
           key={"save"}
-          htmltype="submit"
+          htmlType="submit"
           className="updateButton"
         >
           Create Member

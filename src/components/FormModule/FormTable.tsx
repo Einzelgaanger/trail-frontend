@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { Row, Popover } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { DownloadOutlined } from "@ant-design/icons";
-import Image from "next/Image";
+import Image from "next/image";
 
 import FormFilter from "../FormFilter";
 import ButtonComponent from "../Buttons/Button";
@@ -86,14 +86,14 @@ const FormTable = ({ filterInputChange, filterText, showModal }: Props) => {
               placeholder="search for goals and indicators"
               filterText={filterText}
             />
-            <ButtonComponent htmltype={"button"} className="btn-outline">
+            <ButtonComponent htmlType={"button"} className="btn-outline">
               Import Data
             </ButtonComponent>
-            <ButtonComponent htmltype={"button"} className="updateButton">
+            <ButtonComponent htmlType={"button"} className="updateButton">
               Add new Form
             </ButtonComponent>
             <ButtonComponent
-              htmltype={"button"}
+              htmlType={"button"}
               className="updateButton"
               disabled
             >

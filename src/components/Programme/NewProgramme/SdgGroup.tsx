@@ -162,7 +162,7 @@ const SdgGroup = ({
       <Row className="sdg-group-button-container">
         <div className="d-flex">
           <ButtonComponent
-            htmltype="button"
+            htmlType="button"
             onClick={prevStep}
             className="btn-outline"
 
@@ -171,7 +171,7 @@ const SdgGroup = ({
             Back
           </ButtonComponent>
           <ButtonComponent
-            htmltype="button"
+            htmlType="button"
             onClick={nextStep}
 
             // disabled={loading || setDisabled}

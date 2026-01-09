@@ -22,7 +22,7 @@ const AddMilestone = ({ handleCancel, isModalVisible }: Props) => {
         </span>,
         <ButtonComponent
           key={"save"}
-          htmltype="submit"
+          htmlType="submit"
           className="updateButton"
         >
           Save

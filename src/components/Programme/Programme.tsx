@@ -25,20 +25,20 @@ const Programme = ({ filterInputChange, filterText }: Props) => {
           <Col span={8}></Col>
 
           <Col xs={{ span: 8 }} lg={{ span: 4 }}>
-            <ButtonComponent className="updateButton" htmltype="button">
-              <PlusOutlined /> Archive Programme
+            <ButtonComponent className="updateButton" htmlType="button">
+              <PlusOutlined /> Archive Project
             </ButtonComponent>
           </Col>
           <Col xs={{ span: 8 }} lg={{ span: 4 }}>
             <ButtonComponent
               className="updateButton"
-              htmltype="button"
+              htmlType="button"
               type={"primary"}
             >
-              <Link href="app/programme/new-programme">
+              <Link href="/app/projects-drilldown">
                 {" "}
                 <PlusOutlined />
-                New Programme
+                View All Projects
               </Link>
             </ButtonComponent>
           </Col>

@@ -18,13 +18,13 @@ const SidebarData = [
     icon: <SelectOutlined />,
   },
   {
-    title: "Overview",
+    title: "Portfolio Overview",
     path: "/app/dashboard",
     icon: <AppstoreOutlined />,
   },
 
   {
-    title: "Programmes",
+    title: "Projects / Facilities",
     path: "/app/programme",
     icon: <FileDoneOutlined />,
     iconClosed: <DownOutlined />,
@@ -32,37 +32,31 @@ const SidebarData = [
 
     subNav: [
       {
-        title: "All Programmes",
+        title: "All Projects",
         path: "/app/programme",
         // icon: <SolutionOutlined />,
         cName: "sub-nav",
       },
       {
-        title: "Archived Programmes",
-        path: "/app/archived-program",
-        // icon: <SolutionOutlined />,
-        cName: "sub-nav",
-      },
-      {
-        title: "New Programmes",
-        path: "/app/programme/new-programme",
+        title: "Portfolio Drilldown",
+        path: "/app/projects-drilldown",
         // icon: <SolutionOutlined />,
         cName: "sub-nav",
       },
     ],
   },
   {
-    title: "Goals & Indicator",
+    title: "ESG Metrics & Standards",
     path: "/app/goals-indicator",
     icon: <AimOutlined />,
   },
   {
-    title: "Insight",
+    title: "ESG Analytics",
     path: "/app/signals",
     icon: <SelectOutlined />,
   },
   {
-    title: "Forms Management",
+    title: "PFI Submissions",
     path: "/app/form",
     icon: <SolutionOutlined />,
     iconClosed: <DownOutlined />,
@@ -70,18 +64,33 @@ const SidebarData = [
 
     subNav: [
       {
-        title: "Forms",
-        path: "/app/forms",
+        title: "All Submissions",
+        path: "/app/form",
         icon: <SolutionOutlined />,
         cName: "sub-nav",
       },
       {
-        title: "Archive Forms",
-        path: "/app/forms/get-achieve",
+        title: "Import & Validate",
+        path: "/app/pfi-import",
         icon: <SolutionOutlined />,
         cName: "sub-nav",
       },
     ],
+  },
+  {
+    title: "Green Taxonomy",
+    path: "/app/green-taxonomy",
+    icon: <AimOutlined />,
+  },
+  {
+    title: "Carbon & Net Zero",
+    path: "/app/carbon-netzero",
+    icon: <SelectOutlined />,
+  },
+  {
+    title: "Reports",
+    path: "/app/reports",
+    icon: <FileDoneOutlined />,
   },
   {
     title: "Settings",

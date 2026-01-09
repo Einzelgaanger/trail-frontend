@@ -67,7 +67,7 @@ const ChangePwdForm = ({ onChangePwdInput, onSubmitForm, formData }: Props) => {
 
         <Row style={{ marginTop: "25px" }}>
           <Col span={8}>
-            <ButtonComponent htmlhtmltype="submit" className="updateButton">
+            <ButtonComponent htmlType="submit" className="updateButton">
               Update new Password
             </ButtonComponent>
           </Col>

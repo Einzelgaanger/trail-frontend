@@ -1,7 +1,7 @@
 import React from "react";
 import { PFISubmissions } from "@/components/ESG/PFISubmissions";
 
-const FormPage = () => {
+const PFIImportPage = () => {
   return (
     <>
       <PFISubmissions />
@@ -9,4 +9,4 @@ const FormPage = () => {
   );
 };
 
-export default FormPage;
+export default PFIImportPage;

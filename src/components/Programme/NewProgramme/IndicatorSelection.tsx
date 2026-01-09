@@ -35,7 +35,7 @@ const IndicatorSelection = ({ nextStep, prevStep }: Props) => {
       <Row className="sdg-group-button-container">
         <div className="d-flex">
           <ButtonComponent
-            htmltype="button"
+            htmlType="button"
             onClick={prevStep}
             className="btn-outline"
 
@@ -44,7 +44,7 @@ const IndicatorSelection = ({ nextStep, prevStep }: Props) => {
             Back
           </ButtonComponent>
           <ButtonComponent
-            htmltype="button"
+            htmlType="button"
             onClick={nextStep}
 
             // disabled={loading || setDisabled}

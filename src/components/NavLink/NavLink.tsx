@@ -6,7 +6,6 @@ export const NavLink = ({ href, exact, children, ...props }: any) => {
   const pathname = usePathname();
   const active = " active";
   const isActive = pathname === href || pathname?.startsWith(href);
-  console.log(pathname, "pathname");
   if (isActive) {
     props.className += active;
   }

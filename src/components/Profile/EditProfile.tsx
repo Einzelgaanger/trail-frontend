@@ -155,7 +155,7 @@ const EditProfile = () => {
           </Col>
         </Row>
         <Row>
-          <Button htmltype="submit" className="updateButton">
+          <Button htmlType="submit" className="updateButton">
             {" "}
             Update information
           </Button>

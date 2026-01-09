@@ -4,12 +4,12 @@ import { ReactNode, MouseEventHandler, ButtonHTMLAttributes } from "react";
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  htmltype?: any;
+  htmlType?: any;
   type?: any;
 }
 
 const ButtonComponent = ({
-  htmltype,
+  htmlType,
   type,
   className,
   children,
@@ -18,7 +18,7 @@ const ButtonComponent = ({
 }: ButtonProps) => {
   return (
     <Button
-      htmltype={htmltype}
+      htmlType={htmlType}
       type={type}
       className={className}
       style={style}

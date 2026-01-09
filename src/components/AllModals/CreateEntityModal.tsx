@@ -33,7 +33,7 @@ const CreateEntityModal = ({
         </span>,
         <ButtonComponent
           key={"save"}
-          htmltype="submit"
+          htmlType="submit"
           className="updateButton"
         >
           Create Entity
@@ -50,7 +50,7 @@ const CreateEntityModal = ({
             <div className="modal-header">
               <h3>Level 1</h3>
               <ButtonComponent
-                htmltype="button"
+                htmlType="button"
                 className="entity-btn"
                 onClick={clickAdd}
               >
@@ -136,7 +136,7 @@ const CreateEntityModal = ({
             <div className="modal-header">
               <h3>Level 2</h3>
               <ButtonComponent
-                htmltype="button"
+                htmlType="button"
                 className="entity-btn"
                 onClick={clickAdd}
               >

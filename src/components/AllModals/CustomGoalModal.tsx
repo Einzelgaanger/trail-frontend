@@ -30,7 +30,7 @@ const CustomGoalModal = ({
         </span>,
         <ButtonComponent
           key={"save"}
-          htmltype="submit"
+          htmlType="submit"
           className="updateButton"
         >
           Save
@@ -84,7 +84,7 @@ const CustomGoalModal = ({
                       </div>
                       <div>
                         <ButtonComponent
-                          htmltype="button"
+                          htmlType="button"
                           className="updateButton"
                         >
                           Upload

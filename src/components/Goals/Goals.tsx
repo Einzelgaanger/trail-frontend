@@ -26,7 +26,7 @@ const Goals = ({ filterInputChange, filterText, showModal }: Props) => {
           <Col span={9}></Col>
 
           <Col xs={{ span: 8 }} lg={{ span: 3 }}>
-            <ButtonComponent className="updateButton" htmltype="button">
+            <ButtonComponent className="updateButton" htmlType="button">
               <DeleteOutlined /> Remove Goal
             </ButtonComponent>
           </Col>
@@ -34,7 +34,7 @@ const Goals = ({ filterInputChange, filterText, showModal }: Props) => {
           <Col xs={{ span: 8 }} lg={{ span: 3 }}>
             <ButtonComponent
               className="updateButton"
-              htmltype="button"
+              htmlType="button"
               type={"primary"}
               onClick={showModal}
             >

@@ -51,7 +51,7 @@ const ForgotPasswordForm = ({
           <Row>
             <Col xs={{ span: 12 }} lg={{ span: 24 }}>
               <Form.Item>
-                <Button type="primary" htmltype="submit" className="login__btn">
+                <Button type="primary" htmlType="submit" className="login__btn">
                   Recover Password
                 </Button>
               </Form.Item>

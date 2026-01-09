@@ -32,7 +32,7 @@ const AddRoleModal = ({
         </span>,
         <ButtonComponent
           key={"save"}
-          htmltype="submit"
+          htmlType="submit"
           className="updateButton"
         >
           Add new role

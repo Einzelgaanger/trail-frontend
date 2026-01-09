@@ -79,7 +79,7 @@ const StepThree = ({ step, prevStep, formData }: Props) => {
           <Col xs={{ span: 12 }} lg={{ span: 24 }}>
             <Form.Item>
               <Button
-                htmltype="submit"
+                htmlType="submit"
                 className="login__btn"
                 // disabled={!terms}
               >

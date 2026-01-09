@@ -74,7 +74,7 @@ const StepOne = ({ step, nextStep, prevStep, formData }: Props) => {
         <Col xs={{ span: 12 }} lg={{ span: 24 }}>
           <ButtonComponent
             onClick={nextStep}
-            htmltype="button"
+            htmlType="button"
             className="updateButton"
           >
             Next

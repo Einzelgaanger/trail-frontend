@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useContext } from "react";
-import { Drawer, Menu, Dropdown, Avatar, Switch } from "antd";
+import { Drawer, Dropdown, Avatar, Switch } from "antd";
 import { MenuFoldOutlined, UserOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -76,30 +76,28 @@ const Header = () => {
     console.log("Clicked");
     // props.history.push("/app/profile");
   };
-  const menu = (
-    <Menu>
-      <Menu.Item key="setting:4">
-        <Link href="/app/profile" onClick={onProfile}>
-          Profile
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="setting:6">
-        <Link href="/app/change_password" onClick={onProfile}>
-          Change Password
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="setting:7">
-        <Link href="/app/account_settings" onClick={onProfile}>
-          Account Settings
-        </Link>
-      </Menu.Item>
-      <Menu.Item key="setting:5">
+  const menuItems = [
+    {
+      key: "setting:4",
+      label: <Link href="/app/profile" onClick={onProfile}>Profile</Link>,
+    },
+    {
+      key: "setting:6",
+      label: <Link href="/app/change_password" onClick={onProfile}>Change Password</Link>,
+    },
+    {
+      key: "setting:7",
+      label: <Link href="/app/account_settings" onClick={onProfile}>Account Settings</Link>,
+    },
+    {
+      key: "setting:5",
+      label: (
         <p onClick={onLogout} className="logout_p" style={{ fontSize: "13px" }}>
           Logout
         </p>
-      </Menu.Item>
-    </Menu>
-  );
+      ),
+    },
+  ];
   return (
     <div>
       <nav className="navbar default-layout fixed-top d-flex flex-row">
@@ -175,7 +173,7 @@ const Header = () => {
             )}
           </div>
 
-          <button className="helpGuide" htmltype="button" onClick={showModal}>
+          <button className="helpGuide" type="button" onClick={showModal}>
             <div className="iconLeft">
               <svg
                 width="18"
@@ -194,7 +192,7 @@ const Header = () => {
           </button>
           <ul className="navbar-nav ml-auto navbar-ul">
             <li>
-              <Dropdown overlay={menu} className="dropDownHidden">
+              <Dropdown menu={{ items: menuItems }} className="dropDownHidden">
                 <Link className="nav-link dropdown-toggle" href="#">
                   {/* {image ? (
                     <Avatar
@@ -219,7 +217,7 @@ const Header = () => {
                 placement="right"
                 closable={false}
                 onClose={onClose}
-                visible={visible}
+                open={visible}
                 style={{ zIndex: 9999, textAlign: "center" }}
               >
                 <div className="drawerMenu">
@@ -252,7 +250,7 @@ const Header = () => {
           </ul>
           <button
             className="folderHidden"
-            htmltype="button"
+            type="button"
             data-toggle="offcanvas"
             onClick={showDrawer}
           >

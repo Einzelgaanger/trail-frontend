@@ -15,10 +15,10 @@ import { Login } from "@/types/Auth";
 interface Props {
   formData: Login;
   isActive: boolean;
-  onChangeForm: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
   toggleUserType: () => void;
-  accountTypeOnChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  onSubmitForm: () => void;
+  accountTypeOnChange: (e: any) => void;
+  onSubmitForm: (values?: any) => void;
 }
 export const LoginForm = ({
   formData,
@@ -46,14 +46,13 @@ export const LoginForm = ({
       </div>
 
       <Radio.Group
-        defaultValue=""
-        onChange={() => accountTypeOnChange}
+        value={isActive ? "organisation_user" : "generic_user"}
+        onChange={accountTypeOnChange}
         className="login__group"
       >
         <Radio.Button
           value="organisation_user"
           className={`login__group__button ${isActive ? "isActive" : ""}`}
-          onClick={() => toggleUserType()}
         >
           <div className="button-content-container">
             <div className="content-container">
@@ -72,7 +71,6 @@ export const LoginForm = ({
         <Radio.Button
           value="generic_user"
           className={`login__group__button ${!isActive ? "isActive" : ""}`}
-          onClick={() => toggleUserType()}
         >
           <div className="button-content-container">
             <div className="content-container">
@@ -90,40 +88,41 @@ export const LoginForm = ({
       </Radio.Group>
 
       <div>
-        <Form name="normal_login" onFinish={onSubmitForm}>
+        <Form 
+          name="normal_login" 
+          onFinish={onSubmitForm}
+          initialValues={{
+            email: formData.email,
+            password: formData.password,
+          }}
+        >
           <span>Email</span>
           <Form.Item
             name="email"
-            rules={[{ required: true, message: "Confirm your Input" }]}
+            rules={[{ required: true, message: "Please enter your email" }]}
           >
             <Input
               className="login__input"
               placeholder="Enter email"
               type="email"
-              name="email"
               autoFocus={true}
-              value={formData.email}
-              onChange={() => onChangeForm}
             />
           </Form.Item>
           <span>Password</span>
           <Form.Item
             name="password"
-            rules={[{ required: true, message: "Confirm your Input" }]}
+            rules={[{ required: true, message: "Please enter your password" }]}
           >
             <Input.Password
               className="login__input"
               type="password"
-              name="password"
               placeholder="Enter password"
-              value={formData.password}
-              onChange={() => onChangeForm}
             />
           </Form.Item>
           <Row>
             <Col xs={{ span: 12 }} lg={{ span: 24 }}>
               <Form.Item>
-                <ButtonComponent htmltype="submit" className="updateButton">
+                <ButtonComponent htmlType="submit" className="updateButton">
                   Login
                 </ButtonComponent>
               </Form.Item>

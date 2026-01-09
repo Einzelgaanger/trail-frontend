@@ -102,7 +102,7 @@ const ProgrammeData = ({ nextStep, showModal1, showModal2 }: Props) => {
                   </div>
 
                   <ButtonComponent
-                    htmltype="button"
+                    htmlType="button"
                     className="updateButton"
                     onClick={showModal1}
                     // disabled={loading}
@@ -110,7 +110,7 @@ const ProgrammeData = ({ nextStep, showModal1, showModal2 }: Props) => {
                     Add a milestone
                   </ButtonComponent>
                   <ButtonComponent
-                    htmltype="button"
+                    htmlType="button"
                     className="btn-outline"
                     onClick={showModal2}
                   >
@@ -203,7 +203,7 @@ const ProgrammeData = ({ nextStep, showModal1, showModal2 }: Props) => {
                         <span className="accept margin-left">Max. 5MB</span>
                       </div>
                       <div>
-                        <ButtonComponent htmltype="button">
+                        <ButtonComponent htmlType="button">
                           Upload
                         </ButtonComponent>
                       </div>
@@ -245,7 +245,7 @@ const ProgrammeData = ({ nextStep, showModal1, showModal2 }: Props) => {
       <Row className="sdg-group-button-container">
         <div className="d-flex">
           <ButtonComponent
-            htmltype="button"
+            htmlType="button"
             className="btn-outline"
 
             // onClick={onCancelForm}
@@ -253,7 +253,7 @@ const ProgrammeData = ({ nextStep, showModal1, showModal2 }: Props) => {
           >
             Cancel
           </ButtonComponent>
-          <ButtonComponent htmltype="button" onClick={nextStep}>
+          <ButtonComponent htmlType="button" onClick={nextStep}>
             Next
           </ButtonComponent>
         </div>

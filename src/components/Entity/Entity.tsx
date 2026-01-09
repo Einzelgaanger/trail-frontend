@@ -95,7 +95,7 @@ const Entity = ({ filterInputChange, filterText, showModal }: Props) => {
           </Col>
           <Col span={2}>
             <ButtonComponent
-              htmltype="button"
+              htmlType="button"
               type={"primary"}
               className="updateButton"
               onClick={showModal}
@@ -106,7 +106,7 @@ const Entity = ({ filterInputChange, filterText, showModal }: Props) => {
           </Col>
           <Col span={2}>
             <ButtonComponent
-              htmltype="button"
+              htmlType="button"
               className="btn-extra"
               style={{ background: "#fff", border: "1px solid #707070" }}
             >
@@ -116,7 +116,7 @@ const Entity = ({ filterInputChange, filterText, showModal }: Props) => {
           </Col>
           <Col span={2}>
             <ButtonComponent
-              htmltype="button"
+              htmlType="button"
               className="btn-extra"
               style={{ background: "#fff", border: "1px solid #707070" }}
             >

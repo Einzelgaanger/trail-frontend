@@ -104,14 +104,14 @@ const ProfileRead = ({ onClickEdit }: Props) => {
 
           <div className="popModalStyle">
             <Button
-              htmlhtmltype="button"
+              htmlType="button"
               // onClick={handleModal}
               className="updateButton"
             >
               {" "}
               Continue
             </Button>{" "}
-            {/* <ButtonComponent htmltype={"button"}>continue</ButtonComponent> */}
+            {/* <ButtonComponent htmlType={"button"}>continue</ButtonComponent> */}
           </div>
         </div>
       </div>

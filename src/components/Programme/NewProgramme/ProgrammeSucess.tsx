@@ -14,7 +14,7 @@ const ProgrammeSucess = () => {
       {/* </div> */}
 
       <ButtonComponent
-        htmltype="button"
+        htmlType="button"
 
         // disabled={loading || setDisabled}
       >
