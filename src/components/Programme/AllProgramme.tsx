@@ -5,7 +5,7 @@ import { EnvironmentFilled } from "@ant-design/icons";
 import menu_dots from "../../../public/assets/menu_dots.svg";
 import trail_background_image from "../../../public/assets/trail_background_image.png";
 
-// Consistent ESG Project Data (matching all modules)
+// Consistent ESG Project Data (matching all modules) - Comprehensive Dataset
 const esgProjects = [
   {
     projectId: "PROJ-2024-001",
@@ -61,6 +61,87 @@ const esgProjects = [
     esgStatus: "Complete",
     amount: "₦950M",
   },
+  {
+    projectId: "PROJ-2024-007",
+    name: "Ibadan Wind Energy Project",
+    sector: "Renewable Energy",
+    location: "Oyo State",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    amount: "₦2.2B",
+  },
+  {
+    projectId: "PROJ-2024-008",
+    name: "Benin City Water Supply Upgrade",
+    sector: "Water & Sanitation",
+    location: "Edo State",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    amount: "₦1.45B",
+  },
+  {
+    projectId: "PROJ-2024-009",
+    name: "Warri Refinery Modernization",
+    sector: "Oil & Gas",
+    location: "Delta State",
+    taxonomyStatus: "Transition",
+    esgStatus: "Incomplete",
+    amount: "₦5.2B",
+  },
+  {
+    projectId: "PROJ-2024-010",
+    name: "Lagos BRT System Expansion",
+    sector: "Transportation",
+    location: "Lagos State",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    amount: "₦2.8B",
+  },
+  {
+    projectId: "PROJ-2024-011",
+    name: "Kano Gas Power Station",
+    sector: "Energy",
+    location: "Kano State",
+    taxonomyStatus: "Transition",
+    esgStatus: "Incomplete",
+    amount: "₦3.5B",
+  },
+  {
+    projectId: "PROJ-2024-012",
+    name: "Port Harcourt Recycling Plant",
+    sector: "Waste Management",
+    location: "Rivers State",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    amount: "₦1.2B",
+  },
+  {
+    projectId: "PROJ-2024-013",
+    name: "Jos Solar Microgrid",
+    sector: "Renewable Energy",
+    location: "Plateau State",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    amount: "₦850M",
+  },
+  {
+    projectId: "PROJ-2024-014",
+    name: "Calabar Industrial Waste Treatment",
+    sector: "Waste Management",
+    location: "Cross River State",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    amount: "₦1.65B",
+  },
+  {
+    projectId: "PROJ-2024-015",
+    name: "Kaduna Oil Refinery Expansion",
+    sector: "Oil & Gas",
+    location: "Kaduna State",
+    taxonomyStatus: "Not Green",
+    esgStatus: "Incomplete",
+    amount: "₦4.8B",
+  },
 ];
 
 const AllProgramme = () => {
@@ -83,25 +164,34 @@ const AllProgramme = () => {
 
   return (
     <div className="program-container">
-      <Row gutter={[20, 18]} className="program-section">
+      <Row gutter={[24, 24]} className="program-section">
         {esgProjects.map((project) => (
-          <Col xs={{ span: 24 }} lg={{ span: 8 }} key={project.projectId}>
+          <Col xs={{ span: 24 }} sm={{ span: 12 }} lg={{ span: 8 }} key={project.projectId}>
             <div className="cardStyle">
               <div className="cardContainer">
                 <div className="progImg">
                   <Image
                     src={trail_background_image}
                     alt="Project Image"
-                    width={100}
-                    height={100}
+                    width={120}
+                    height={120}
+                    style={{ objectFit: "cover" }}
                   />
+                  <div className="project-status-badge">
+                    <Tag color={getTaxonomyColor(project.taxonomyStatus)} style={{ margin: 0, fontWeight: 500 }}>
+                      {project.taxonomyStatus}
+                    </Tag>
+                  </div>
                 </div>
                 <div className="rightContent">
                   <div className="subRight1">
-                    <h3 className="progName">{project.name}</h3>
+                    <div className="project-header">
+                      <span className="project-id">{project.projectId}</span>
+                      <h3 className="progName">{project.name}</h3>
+                    </div>
                     <Popover
                       content={
-                        <div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                           <Link href={`/app/projects-drilldown`} className="content-p">
                             View Details
                           </Link>
@@ -110,28 +200,39 @@ const AllProgramme = () => {
                           </Link>
                         </div>
                       }
-                      placement="bottom"
+                      placement="bottomRight"
+                      trigger="click"
                     >
-                      <Image src={menu_dots} alt="Menu" height="20" />
+                      <div className="card-menu-btn">
+                        <Image src={menu_dots} alt="Menu" height="18" width="18" />
+                      </div>
                     </Popover>
                   </div>
-                  <div className="sdg" style={{ marginBottom: "8px" }}>
-                    <Tag color={getTaxonomyColor(project.taxonomyStatus)}>
-                      {project.taxonomyStatus}
+                  
+                  <div className="project-details">
+                    <div className="detail-row">
+                      <span className="detail-label">Sector</span>
+                      <span className="detail-value">{project.sector}</span>
+                    </div>
+                    
+                    <div className="detail-row">
+                      <span className="detail-label">Location</span>
+                      <div className="location">
+                        <EnvironmentFilled style={{ fontSize: "12px", marginRight: "4px" }} />
+                        <span className="locStyle">{project.location}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="detail-row amount-row">
+                      <span className="detail-label">Investment</span>
+                      <span className="amount-value">{project.amount}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="card-footer">
+                    <Tag color={getESGStatusColor(project.esgStatus)} className="esg-status-tag">
+                      ESG: {project.esgStatus}
                     </Tag>
-                    <Tag color={getESGStatusColor(project.esgStatus)}>
-                      {project.esgStatus}
-                    </Tag>
-                  </div>
-                  <div style={{ marginBottom: "4px", fontSize: "14px", color: "#666" }}>
-                    <strong>{project.amount}</strong>
-                  </div>
-                  <div className="location">
-                    <EnvironmentFilled />
-                    <span className="locStyle">{project.location}</span>
-                  </div>
-                  <div style={{ marginTop: "4px", fontSize: "12px", color: "#888" }}>
-                    {project.sector} • {project.projectId}
                   </div>
                 </div>
               </div>

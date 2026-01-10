@@ -69,7 +69,7 @@ export const PortfolioOverview: React.FC = () => {
               <h1 style={{ fontSize: '28px', margin: '12px 0 4px 0', fontWeight: 600 }}>
                 {formatCurrency(portfolioValue)}
               </h1>
-              <div style={{ fontSize: '14px', color: '#666', marginTop: '8px' }}>
+              <div style={{ fontSize: '14px', color: '#334155', marginTop: '8px' }}>
                 <span style={{ fontWeight: 500 }}>{projectCount}</span> Projects/Facilities
               </div>
             </div>
@@ -100,7 +100,7 @@ export const PortfolioOverview: React.FC = () => {
                 showInfo={false}
                 style={{ marginTop: '8px' }}
               />
-              <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
+              <div style={{ fontSize: '12px', color: '#334155', marginTop: '4px' }}>
                 % of required ESG fields submitted and validated
               </div>
             </div>
@@ -126,7 +126,7 @@ export const PortfolioOverview: React.FC = () => {
                 <Tag color="green">{reportingTimeliness.onTime} On-time</Tag>
                 <Tag color="red">{reportingTimeliness.late} Late</Tag>
               </div>
-              <div style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
+              <div style={{ fontSize: '12px', color: '#334155', marginTop: '8px' }}>
                 PFIs complied with reporting deadlines
               </div>
             </div>
@@ -162,7 +162,7 @@ export const PortfolioOverview: React.FC = () => {
                   <Tag color="red">{greenTaxonomy.notGreen}%</Tag>
                 </div>
               </div>
-              <div style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
+              <div style={{ fontSize: '12px', color: '#334155', marginTop: '8px' }}>
                 % by portfolio value
               </div>
             </div>
@@ -184,7 +184,7 @@ export const PortfolioOverview: React.FC = () => {
               <h1 style={{ fontSize: '28px', margin: '12px 0 4px 0', fontWeight: 600 }}>
                 {formatNumber(carbonSummary.total)}
               </h1>
-              <div style={{ fontSize: '12px', color: '#666', marginTop: '4px', marginBottom: '8px' }}>
+              <div style={{ fontSize: '12px', color: '#334155', marginTop: '4px', marginBottom: '8px' }}>
                 tCO₂e Total
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '13px', marginTop: '8px' }}>
@@ -237,7 +237,7 @@ export const PortfolioOverview: React.FC = () => {
                   </Tag>
                 </Tooltip>
               </div>
-              <div style={{ fontSize: '12px', color: '#666', marginTop: '8px' }}>
+              <div style={{ fontSize: '12px', color: '#334155', marginTop: '8px' }}>
                 Based on missing data, failed validations, missing evidence, and high-risk sectors
               </div>
             </div>

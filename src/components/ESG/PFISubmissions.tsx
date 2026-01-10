@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Table, Tag, Input, Button, Row, Col, Select, Space, Upload, Steps, Modal, Progress, Tabs } from "antd";
+import { Table, Tag, Input, Button, Row, Col, Select, Space, Upload, Steps, Modal, Progress, Tabs, Radio, List, message, Card } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import type { UploadProps, TabsProps } from "antd";
 import { 
@@ -8,9 +8,13 @@ import {
   UploadOutlined, 
   DownloadOutlined, 
   FileExcelOutlined,
+  FilePdfOutlined,
+  FileWordOutlined,
+  FileOutlined,
   CheckCircleOutlined,
   CloseCircleOutlined,
-  ClockCircleOutlined
+  ClockCircleOutlined,
+  DeleteOutlined
 } from "@ant-design/icons";
 import ButtonComponent from "../Buttons/Button";
 import FormFilter from "../FormFilter";
@@ -37,7 +41,7 @@ interface ErrorLog {
   action: string;
 }
 
-// Mock PFI Submissions Data
+// Mock PFI Submissions Data - Comprehensive and Consistent
 const mockPFISubmissions: PFISubmission[] = [
   {
     key: "1",
@@ -94,6 +98,116 @@ const mockPFISubmissions: PFISubmission[] = [
     validator: "-",
     lastUpdated: "2024-01-12",
   },
+  {
+    key: "6",
+    pfiName: "Enugu Waste Management Facility",
+    projectId: "PROJ-2024-006",
+    submissionDate: "2024-01-22",
+    status: "Approved",
+    dataQualityScore: 89,
+    errorCount: 3,
+    validator: "Jane Smith",
+    lastUpdated: "2024-01-24",
+  },
+  {
+    key: "7",
+    pfiName: "Ibadan Wind Energy Project",
+    projectId: "PROJ-2024-007",
+    submissionDate: "2024-01-19",
+    status: "Approved",
+    dataQualityScore: 93,
+    errorCount: 1,
+    validator: "John Doe",
+    lastUpdated: "2024-01-21",
+  },
+  {
+    key: "8",
+    pfiName: "Benin City Water Supply Upgrade",
+    projectId: "PROJ-2024-008",
+    submissionDate: "2024-01-17",
+    status: "Validated",
+    dataQualityScore: 87,
+    errorCount: 4,
+    validator: "Jane Smith",
+    lastUpdated: "2024-01-20",
+  },
+  {
+    key: "9",
+    pfiName: "Warri Refinery Modernization",
+    projectId: "PROJ-2024-009",
+    submissionDate: "2024-01-14",
+    status: "Submitted",
+    dataQualityScore: 68,
+    errorCount: 15,
+    validator: "-",
+    lastUpdated: "2024-01-15",
+  },
+  {
+    key: "10",
+    pfiName: "Lagos BRT System Expansion",
+    projectId: "PROJ-2024-010",
+    submissionDate: "2024-01-23",
+    status: "Published",
+    dataQualityScore: 91,
+    errorCount: 2,
+    validator: "John Doe",
+    lastUpdated: "2024-01-25",
+  },
+  {
+    key: "11",
+    pfiName: "Kano Gas Power Station",
+    projectId: "PROJ-2024-011",
+    submissionDate: "2024-01-16",
+    status: "Validated",
+    dataQualityScore: 75,
+    errorCount: 8,
+    validator: "Jane Smith",
+    lastUpdated: "2024-01-18",
+  },
+  {
+    key: "12",
+    pfiName: "Port Harcourt Recycling Plant",
+    projectId: "PROJ-2024-012",
+    submissionDate: "2024-01-21",
+    status: "Approved",
+    dataQualityScore: 90,
+    errorCount: 2,
+    validator: "John Doe",
+    lastUpdated: "2024-01-23",
+  },
+  {
+    key: "13",
+    pfiName: "Jos Solar Microgrid",
+    projectId: "PROJ-2024-013",
+    submissionDate: "2024-01-24",
+    status: "Published",
+    dataQualityScore: 94,
+    errorCount: 1,
+    validator: "Jane Smith",
+    lastUpdated: "2024-01-26",
+  },
+  {
+    key: "14",
+    pfiName: "Calabar Industrial Waste Treatment",
+    projectId: "PROJ-2024-014",
+    submissionDate: "2024-01-20",
+    status: "Validated",
+    dataQualityScore: 86,
+    errorCount: 5,
+    validator: "John Doe",
+    lastUpdated: "2024-01-22",
+  },
+  {
+    key: "15",
+    pfiName: "Kaduna Oil Refinery Expansion",
+    projectId: "PROJ-2024-015",
+    submissionDate: "2024-01-12",
+    status: "Draft",
+    dataQualityScore: 52,
+    errorCount: 32,
+    validator: "-",
+    lastUpdated: "2024-01-13",
+  },
 ];
 
 // Mock Error Log Data
@@ -127,12 +241,111 @@ const mockErrorLog: ErrorLog[] = [
   },
   {
     key: "4",
-    field: "Beneficiary Count",
-    issue: "Value exceeds expected range",
+    field: "Project Amount",
+    issue: "Value exceeds expected range for sector",
     rowId: "PROJ-2024-003-004",
     severity: "Warning",
     status: "Open",
     action: "Verify data accuracy",
+  },
+  {
+    key: "5",
+    field: "Carbon Scope 2",
+    issue: "Missing grid emission factor",
+    rowId: "PROJ-2024-005-001",
+    severity: "Critical",
+    status: "Open",
+    action: "Provide grid emission factor",
+  },
+  {
+    key: "6",
+    field: "End Date",
+    issue: "End date is before start date",
+    rowId: "PROJ-2024-005-002",
+    severity: "Critical",
+    status: "Open",
+    action: "Correct project timeline",
+  },
+  {
+    key: "7",
+    field: "Taxonomy Evidence",
+    issue: "Evidence file not uploaded",
+    rowId: "PROJ-2024-005-003",
+    severity: "Warning",
+    status: "Open",
+    action: "Upload evidence document",
+  },
+  {
+    key: "8",
+    field: "Location",
+    issue: "Location field is empty",
+    rowId: "PROJ-2024-009-001",
+    severity: "Warning",
+    status: "Open",
+    action: "Provide project location",
+  },
+  {
+    key: "9",
+    field: "Carbon Scope 3",
+    issue: "Upstream emissions data incomplete",
+    rowId: "PROJ-2024-009-002",
+    severity: "Warning",
+    status: "Open",
+    action: "Complete scope 3 emissions data",
+  },
+  {
+    key: "10",
+    field: "Data Quality Score",
+    issue: "Score below acceptable threshold",
+    rowId: "PROJ-2024-015-001",
+    severity: "Critical",
+    status: "Open",
+    action: "Improve data completeness",
+  },
+  {
+    key: "11",
+    field: "Sector Classification",
+    issue: "Sector does not match project description",
+    rowId: "PROJ-2024-015-002",
+    severity: "Warning",
+    status: "Resolved",
+    action: "Updated sector classification",
+  },
+  {
+    key: "12",
+    field: "Project Start Date",
+    issue: "Date format incorrect",
+    rowId: "PROJ-2024-011-001",
+    severity: "Info",
+    status: "Resolved",
+    action: "Corrected date format",
+  },
+  {
+    key: "13",
+    field: "ESG Status",
+    issue: "Status workflow violation",
+    rowId: "PROJ-2024-011-002",
+    severity: "Warning",
+    status: "Open",
+    action: "Review approval workflow",
+  },
+  {
+    key: "14",
+    field: "Beneficiary Count",
+    issue: "Value missing",
+    rowId: "PROJ-2024-009-003",
+    severity: "Warning",
+    status: "Open",
+    action: "Provide beneficiary count",
+  },
+  {
+    key: "15",
+    field: "Energy Consumption",
+    issue: "Units not specified",
+    rowId: "PROJ-2024-005-004",
+    severity: "Info",
+    status: "Open",
+    action: "Specify measurement units",
   },
 ];
 
@@ -356,20 +569,76 @@ export const PFISubmissions: React.FC = () => {
     },
   ];
 
-  const uploadProps: UploadProps = {
-    name: "file",
-    accept: ".xlsx,.xls,.csv",
-    beforeUpload: (file) => {
-      console.log("Uploading file:", file.name);
-      // Simulate upload and validation
+  const handleFileUpload = (file: File, type: "excel" | "form") => {
+    const uploadedFile: UploadedFile = {
+      id: Date.now().toString(),
+      name: file.name,
+      type: type,
+      file: file,
+      uploadDate: new Date().toLocaleString("en-NG", { timeZone: "Africa/Lagos" }),
+      size: file.size,
+    };
+
+    setUploadedFiles((prev) => [...prev, uploadedFile]);
+    
+    if (type === "excel") {
+      message.success(`Excel file "${file.name}" uploaded successfully. Validation in progress...`);
+      // Simulate validation
       setTimeout(() => {
         Modal.success({
           title: "File Uploaded Successfully",
           content: `File ${file.name} has been uploaded. Validation in progress...`,
         });
       }, 1000);
-      return false; // Prevent auto upload for PoC
+    } else {
+      message.success(`Form document "${file.name}" uploaded successfully.`);
+    }
+  };
+
+  const handleRemoveFile = (fileId: string) => {
+    setUploadedFiles((prev) => prev.filter((f) => f.id !== fileId));
+    message.success("File removed successfully");
+  };
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return "0 Bytes";
+    const k = 1024;
+    const sizes = ["Bytes", "KB", "MB", "GB"];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + " " + sizes[i];
+  };
+
+  const getFileIcon = (type: "excel" | "form", fileName: string) => {
+    if (type === "excel") {
+      return <FileExcelOutlined style={{ fontSize: "20px", color: "#27BE63" }} />;
+    }
+    const ext = fileName.split(".").pop()?.toLowerCase();
+    if (ext === "pdf") {
+      return <FilePdfOutlined style={{ fontSize: "20px", color: "#ef4444" }} />;
+    } else if (ext === "doc" || ext === "docx") {
+      return <FileWordOutlined style={{ fontSize: "20px", color: "#1354d3" }} />;
+    }
+    return <FileOutlined style={{ fontSize: "20px", color: "#64748b" }} />;
+  };
+
+  const excelUploadProps: UploadProps = {
+    name: "file",
+    accept: ".xlsx,.xls,.csv",
+    beforeUpload: (file) => {
+      handleFileUpload(file, "excel");
+      return false; // Prevent auto upload
     },
+    showUploadList: false,
+  };
+
+  const formUploadProps: UploadProps = {
+    name: "file",
+    accept: ".pdf,.doc,.docx,.txt",
+    beforeUpload: (file) => {
+      handleFileUpload(file, "form");
+      return false; // Prevent auto upload
+    },
+    showUploadList: false,
   };
 
   const filteredSubmissions = mockPFISubmissions.filter((item) => {
@@ -380,11 +649,98 @@ export const PFISubmissions: React.FC = () => {
     return matchesSearch && matchesStatus;
   });
 
+  const handleExportErrorLog = () => {
+    // Prepare CSV content for error log
+    const BOM = "\uFEFF"; // UTF-8 BOM for Excel
+    
+    // Escape CSV cells (handle commas, quotes, newlines)
+    const escapeCSVCell = (cell: string | number | undefined) => {
+      const cellValue = String(cell || "");
+      if (cellValue.includes(",") || cellValue.includes('"') || cellValue.includes("\n")) {
+        return `"${cellValue.replace(/"/g, '""')}"`;
+      }
+      return cellValue;
+    };
+
+    // Report Header Section
+    const reportHeader = [
+      "DBN ESG INTEGRATED SOLUTION - PFI SUBMISSIONS ERROR LOG",
+      `Generated: ${new Date().toLocaleString("en-NG", { timeZone: "Africa/Lagos" })}`,
+      "",
+      `Total Errors: ${mockErrorLog.length}`,
+      `Critical Errors: ${mockErrorLog.filter(e => e.severity === "Critical").length}`,
+      `Warning Errors: ${mockErrorLog.filter(e => e.severity === "Warning").length}`,
+      `Info Errors: ${mockErrorLog.filter(e => e.severity === "Info").length}`,
+      `Open Issues: ${mockErrorLog.filter(e => e.status === "Open").length}`,
+      `Resolved Issues: ${mockErrorLog.filter(e => e.status === "Resolved").length}`,
+      "",
+      "",
+      "ERROR LOG DETAILS",
+      "",
+    ];
+
+    // Error Log Table Headers
+    const errorHeaders = [
+      "Field",
+      "Issue",
+      "Row/Record ID",
+      "Severity",
+      "Status",
+      "Action Required"
+    ];
+
+    // Error Log Data Rows
+    const errorRows = mockErrorLog.map(error => [
+      escapeCSVCell(error.field),
+      escapeCSVCell(error.issue),
+      escapeCSVCell(error.rowId),
+      escapeCSVCell(error.severity),
+      escapeCSVCell(error.status),
+      escapeCSVCell(error.action)
+    ]);
+
+    // Combine all sections
+    const csvContent = [
+      ...reportHeader,
+      errorHeaders.map(escapeCSVCell).join(","),
+      ...errorRows.map(row => row.join(",")),
+      "",
+      "",
+      "SEVERITY DEFINITIONS",
+      "",
+      "Critical: Errors that must be resolved before submission can proceed",
+      "Warning: Issues that should be addressed but do not block submission",
+      "Info: Informational messages or suggestions for improvement",
+      "",
+      "STATUS DEFINITIONS",
+      "",
+      "Open: Error has been identified and requires action",
+      "Resolved: Error has been fixed and verified"
+    ].join("\n");
+
+    // Create blob and trigger download
+    const blob = new Blob([BOM + csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    
+    const today = new Date().toISOString().split('T')[0];
+    link.setAttribute("href", url);
+    link.setAttribute("download", `DBN_PFI_Error_Log_${today}.csv`);
+    link.style.visibility = "hidden";
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    message.success("Error log exported successfully as Excel!");
+  };
+
   return (
     <div className="col-12">
       <div style={{ marginBottom: "24px" }}>
         <h1 className="view-title">PFI Submissions</h1>
-        <p style={{ color: "#666", marginTop: "8px" }}>
+        <p style={{ color: "#0f172a", marginTop: "8px", fontWeight: 400 }}>
           Manage PFI ESG submissions with Excel import, validation, and approval workflow
         </p>
       </div>
@@ -423,24 +779,104 @@ export const PFISubmissions: React.FC = () => {
                     </Select>
                   </Col>
                   <Col xs={{ span: 24 }} lg={{ span: 8 }}>
-                    <Space>
-                      <Upload {...uploadProps}>
-                        <ButtonComponent
-                          htmlType="button"
-                          className="updateButton"
-                        >
-                          <UploadOutlined style={{ marginRight: "8px" }} /> Import Excel
-                        </ButtonComponent>
-                      </Upload>
-                      <ButtonComponent
-                        htmlType="button"
-                        className="btn-outline"
+                    <Space direction="vertical" style={{ width: "100%" }} size="small">
+                      <Radio.Group 
+                        value={uploadType} 
+                        onChange={(e) => setUploadType(e.target.value)}
+                        buttonStyle="solid"
+                        size="small"
                       >
-                        <DownloadOutlined style={{ marginRight: "8px" }} /> Download Template
-                      </ButtonComponent>
+                        <Radio.Button value="excel">
+                          <FileExcelOutlined /> Excel
+                        </Radio.Button>
+                        <Radio.Button value="form">
+                          <FilePdfOutlined /> Forms
+                        </Radio.Button>
+                      </Radio.Group>
+                      <Space>
+                        {uploadType === "excel" ? (
+                          <Upload {...excelUploadProps}>
+                            <ButtonComponent
+                              htmlType="button"
+                              className="updateButton"
+                            >
+                              <UploadOutlined style={{ marginRight: "8px" }} /> Import Excel
+                            </ButtonComponent>
+                          </Upload>
+                        ) : (
+                          <Upload {...formUploadProps}>
+                            <ButtonComponent
+                              htmlType="button"
+                              className="updateButton"
+                            >
+                              <UploadOutlined style={{ marginRight: "8px" }} /> Upload Form
+                            </ButtonComponent>
+                          </Upload>
+                        )}
+                        {uploadType === "excel" && (
+                          <ButtonComponent
+                            htmlType="button"
+                            className="btn-outline"
+                          >
+                            <DownloadOutlined style={{ marginRight: "8px" }} /> Download Template
+                          </ButtonComponent>
+                        )}
+                      </Space>
                     </Space>
                   </Col>
                 </Row>
+
+                {uploadedFiles.length > 0 && (
+                  <Card 
+                    title="Uploaded Files" 
+                    size="small" 
+                    style={{ marginBottom: "24px" }}
+                    extra={
+                      <Tag color="blue">{uploadedFiles.length} file(s) uploaded</Tag>
+                    }
+                  >
+                    <List
+                      dataSource={uploadedFiles}
+                      renderItem={(item) => (
+                        <List.Item
+                          actions={[
+                            <Button
+                              type="link"
+                              danger
+                              icon={<DeleteOutlined />}
+                              onClick={() => handleRemoveFile(item.id)}
+                            >
+                              Remove
+                            </Button>
+                          ]}
+                        >
+                          <List.Item.Meta
+                            avatar={getFileIcon(item.type, item.name)}
+                            title={
+                              <Space>
+                                <span style={{ fontWeight: 500 }}>{item.name}</span>
+                                <Tag color={item.type === "excel" ? "green" : "blue"}>
+                                  {item.type === "excel" ? "Excel" : "Form"}
+                                </Tag>
+                              </Space>
+                            }
+                            description={
+                              <Space>
+                                <span style={{ fontSize: "12px", color: "#64748b" }}>
+                                  {formatFileSize(item.size)}
+                                </span>
+                                <span style={{ fontSize: "12px", color: "#64748b" }}>•</span>
+                                <span style={{ fontSize: "12px", color: "#64748b" }}>
+                                  Uploaded: {item.uploadDate}
+                                </span>
+                              </Space>
+                            }
+                          />
+                        </List.Item>
+                      )}
+                    />
+                  </Card>
+                )}
 
                 <div style={{ marginBottom: "16px", padding: "16px", background: "#f5f5f5", borderRadius: "4px" }}>
                   <Steps
@@ -487,6 +923,7 @@ export const PFISubmissions: React.FC = () => {
                         <ButtonComponent
                           htmlType="button"
                           className="btn-outline"
+                          onClick={handleExportErrorLog}
                         >
                           <DownloadOutlined style={{ marginRight: "8px" }} /> Export Error Log
                         </ButtonComponent>

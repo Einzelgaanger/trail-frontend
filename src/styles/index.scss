@@ -29,7 +29,15 @@
 
 .light {
   background-color: #f8fafc;
-  color: #1e293b;
+  color: #0f172a;
+  
+  * {
+    color: #0f172a;
+  }
+  
+  p, span, div, h1, h2, h3, h4, h5, h6, a {
+    color: #0f172a;
+  }
   
   .dashboard-tab, .card, .ant-card, .new-sidebar-nav {
     background-color: #ffffff !important;
@@ -37,6 +45,7 @@
     border-radius: 12px !important;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
     padding: 20px !important;
+    color: #0f172a !important;
   }
 }
 
@@ -86,9 +95,31 @@
   margin: 0 !important;
   border-radius: 0 !important;
   height: 100vh !important;
+  overflow: hidden !important;
   
   .sidebar-nav-container {
-    padding: 16px !important;
+    padding: 8px 0 !important;
+    height: calc(100vh - 60px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    
+    // Custom scrollbar styling
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
   }
   
   .submenu-item {
@@ -1107,55 +1138,213 @@
     }
     .cardStyle {
       width: 100%;
-
-      border-radius: 4px;
+      border-radius: 12px;
       border: 1px solid #e4e7ec;
       background-color: #fff;
-      transition: 0.3s;
-      color: #4b4b4b;
+      transition: all 0.3s ease;
+      color: #0f172a;
+      overflow: hidden;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+      
+      &:hover {
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+        transform: translateY(-2px);
+        border-color: #cbd5e1;
+      }
 
       .cardContainer {
         display: flex;
-        height: 180px;
-        // width: 454px;
+        min-height: 200px;
+        height: auto;
+        flex-direction: row;
       }
+      
       .progImg {
-        width: 40%;
-        margin: 5px;
+        width: 140px;
+        min-width: 140px;
+        height: 100%;
+        min-height: 200px;
+        position: relative;
+        background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        
         img {
           width: 100%;
           height: 100%;
-          object-fit: contain;
-          // border-top-left-radius: 5px;
-          // border-bottom-left-radius: 5px;
-
-          &:hover {
-            opacity: 0.8;
-          }
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+        
+        .project-status-badge {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          z-index: 2;
+          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+        
+        &:hover img {
+          transform: scale(1.05);
+        }
+      }
+      
+      // Responsive adjustments
+      @media (max-width: 768px) {
+        .cardContainer {
+          flex-direction: column;
+        }
+        
+        .progImg {
+          width: 100%;
+          min-width: 100%;
+          height: 180px;
+          min-height: 180px;
+        }
+        
+        .rightContent {
+          padding: 16px;
         }
       }
 
       .rightContent {
-        padding: 12px 20px 10px;
-        width: 60%;
+        padding: 20px;
+        flex: 1;
         display: flex;
         flex-direction: column;
-        // justify-content: space-between;
-      }
-
-      .progName {
-        font-weight: bold;
+        justify-content: space-between;
+        min-height: 200px;
       }
 
       .subRight1 {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
-        margin-top: 10px;
+        margin-bottom: 16px;
+        gap: 12px;
       }
+      
+      .project-header {
+        flex: 1;
+        min-width: 0;
+        
+        .project-id {
+          display: inline-block;
+          font-size: 11px;
+          font-weight: 600;
+          color: #64748b;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 6px;
+          padding: 2px 8px;
+          background-color: #f1f5f9;
+          border-radius: 4px;
+        }
+      }
+
+      .progName {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.4;
+        color: #0f172a;
+        margin: 0;
+        margin-top: 6px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .card-menu-btn {
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        
+        &:hover {
+          background-color: #f1f5f9;
+        }
+      }
+      
+      .project-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 13px;
+        
+        .detail-label {
+          color: #64748b;
+          font-weight: 500;
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+        }
+        
+        .detail-value {
+          color: #0f172a;
+          font-weight: 500;
+          text-align: right;
+          flex: 1;
+          margin-left: 12px;
+        }
+        
+        &.amount-row {
+          padding-top: 8px;
+          border-top: 1px solid #e2e8f0;
+          margin-top: 4px;
+          
+          .amount-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+          }
+        }
+      }
+      
       .location {
-        margin-top: auto;
+        display: flex;
+        align-items: center;
+        color: #0f172a;
+        font-weight: 500;
+        flex: 1;
+        justify-content: flex-end;
+        
+        .locStyle {
+          font-size: 13px;
+        }
       }
+      
+      .card-footer {
+        display: flex;
+        align-items: center;
+        padding-top: 12px;
+        border-top: 1px solid #e2e8f0;
+        margin-top: auto;
+        
+        .esg-status-tag {
+          font-size: 12px;
+          font-weight: 500;
+          padding: 4px 12px;
+          margin: 0;
+          border-radius: 6px;
+        }
+      }
+      
       // .subHead {
       //     margin-top: 7.5rem;
       // }
@@ -1221,7 +1410,7 @@
     .view-title {
       font-size: 18px;
       font-weight: 600;
-      color: #0d0f11;
+      color: #0f172a;
       margin-top: 49px;
       margin-left: 14px;
     }
@@ -2470,5 +2659,53 @@
 // }
 .ant-tabs-tab {
   border-radius: 20px;
-  background-color: red;
+}
+
+// Global text color improvements - make all text darker
+p, span, div, label, td, th {
+  color: #0f172a !important;
+}
+
+// Override light grey text colors with darker alternatives
+.light {
+  p, span, div, label, td, th, h1, h2, h3, h4, h5, h6 {
+    color: #0f172a !important;
+  }
+  
+  // Secondary text should be darker but slightly muted
+  .ant-typography-secondary,
+  span[style*="color: #666"],
+  div[style*="color: #666"],
+  p[style*="color: #666"] {
+    color: #334155 !important;
+  }
+}
+
+// Ant Design typography overrides
+.ant-typography {
+  color: #0f172a !important;
+  
+  &.ant-typography-secondary {
+    color: #334155 !important;
+  }
+}
+
+// Card titles and content
+.ant-card-head-title,
+.ant-card-body p,
+.ant-card-body span,
+.ant-card-body div {
+  color: #0f172a !important;
+}
+
+// Table text
+.ant-table,
+.ant-table-tbody > tr > td,
+.ant-table-thead > tr > th {
+  color: #0f172a !important;
+}
+
+// Form labels
+.ant-form-item-label > label {
+  color: #0f172a !important;
 }

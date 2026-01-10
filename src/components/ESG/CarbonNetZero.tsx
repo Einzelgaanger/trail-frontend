@@ -23,7 +23,7 @@ interface CarbonData {
   status: "On Track" | "At Risk" | "Off Track";
 }
 
-// Mock Carbon Data
+// Mock Carbon Data - Comprehensive and Consistent
 const mockCarbonData: CarbonData[] = [
   {
     key: "1",
@@ -103,6 +103,166 @@ const mockCarbonData: CarbonData[] = [
     targetYear: 2026,
     targetReduction: 15,
     currentProgress: 9,
+    status: "Off Track",
+  },
+  {
+    key: "6",
+    projectId: "PROJ-2024-006",
+    projectName: "Enugu Waste Management Facility",
+    sector: "Waste Management",
+    scope1: 180,
+    scope2: 520,
+    scope3: 2800,
+    total: 3500,
+    baselineYear: 2023,
+    baselineEmissions: 5500,
+    targetYear: 2025,
+    targetReduction: 40,
+    currentProgress: 36,
+    status: "On Track",
+  },
+  {
+    key: "7",
+    projectId: "PROJ-2024-007",
+    projectName: "Ibadan Wind Energy Project",
+    sector: "Renewable Energy",
+    scope1: 120,
+    scope2: 380,
+    scope3: 2100,
+    total: 2600,
+    baselineYear: 2023,
+    baselineEmissions: 4800,
+    targetYear: 2026,
+    targetReduction: 48,
+    currentProgress: 46,
+    status: "On Track",
+  },
+  {
+    key: "8",
+    projectId: "PROJ-2024-008",
+    projectName: "Benin City Water Supply Upgrade",
+    sector: "Water & Sanitation",
+    scope1: 220,
+    scope2: 950,
+    scope3: 3800,
+    total: 4970,
+    baselineYear: 2023,
+    baselineEmissions: 6800,
+    targetYear: 2025,
+    targetReduction: 32,
+    currentProgress: 27,
+    status: "On Track",
+  },
+  {
+    key: "9",
+    projectId: "PROJ-2024-009",
+    projectName: "Warri Refinery Modernization",
+    sector: "Oil & Gas",
+    scope1: 5200,
+    scope2: 3200,
+    scope3: 18000,
+    total: 26400,
+    baselineYear: 2023,
+    baselineEmissions: 32000,
+    targetYear: 2027,
+    targetReduction: 22,
+    currentProgress: 18,
+    status: "At Risk",
+  },
+  {
+    key: "10",
+    projectId: "PROJ-2024-010",
+    projectName: "Lagos BRT System Expansion",
+    sector: "Transportation",
+    scope1: 95,
+    scope2: 650,
+    scope3: 4800,
+    total: 5545,
+    baselineYear: 2023,
+    baselineEmissions: 7500,
+    targetYear: 2026,
+    targetReduction: 38,
+    currentProgress: 26,
+    status: "On Track",
+  },
+  {
+    key: "11",
+    projectId: "PROJ-2024-011",
+    projectName: "Kano Gas Power Station",
+    sector: "Energy",
+    scope1: 3800,
+    scope2: 2100,
+    scope3: 9500,
+    total: 15400,
+    baselineYear: 2023,
+    baselineEmissions: 20000,
+    targetYear: 2026,
+    targetReduction: 28,
+    currentProgress: 23,
+    status: "On Track",
+  },
+  {
+    key: "12",
+    projectId: "PROJ-2024-012",
+    projectName: "Port Harcourt Recycling Plant",
+    sector: "Waste Management",
+    scope1: 140,
+    scope2: 480,
+    scope3: 2400,
+    total: 3020,
+    baselineYear: 2023,
+    baselineEmissions: 5200,
+    targetYear: 2025,
+    targetReduction: 45,
+    currentProgress: 42,
+    status: "On Track",
+  },
+  {
+    key: "13",
+    projectId: "PROJ-2024-013",
+    projectName: "Jos Solar Microgrid",
+    sector: "Renewable Energy",
+    scope1: 80,
+    scope2: 250,
+    scope3: 1200,
+    total: 1530,
+    baselineYear: 2023,
+    baselineEmissions: 3200,
+    targetYear: 2025,
+    targetReduction: 55,
+    currentProgress: 52,
+    status: "On Track",
+  },
+  {
+    key: "14",
+    projectId: "PROJ-2024-014",
+    projectName: "Calabar Industrial Waste Treatment",
+    sector: "Waste Management",
+    scope1: 200,
+    scope2: 680,
+    scope3: 3200,
+    total: 4080,
+    baselineYear: 2023,
+    baselineEmissions: 6000,
+    targetYear: 2026,
+    targetReduction: 35,
+    currentProgress: 32,
+    status: "On Track",
+  },
+  {
+    key: "15",
+    projectId: "PROJ-2024-015",
+    projectName: "Kaduna Oil Refinery Expansion",
+    sector: "Oil & Gas",
+    scope1: 9200,
+    scope2: 3800,
+    scope3: 14000,
+    total: 27000,
+    baselineYear: 2023,
+    baselineEmissions: 30000,
+    targetYear: 2027,
+    targetReduction: 12,
+    currentProgress: 10,
     status: "Off Track",
   },
 ];
@@ -239,11 +399,120 @@ export const CarbonNetZero: React.FC = () => {
       item.sector.toLowerCase().includes(searchText.toLowerCase())
   );
 
+  const exportCarbonReport = () => {
+    // Prepare CSV content with comprehensive carbon report
+    const BOM = "\uFEFF"; // UTF-8 BOM for Excel
+    
+    // Report Header Section
+    const reportHeader = [
+      "DBN ESG INTEGRATED SOLUTION - CARBON & NET ZERO REPORT",
+      `Generated: ${new Date().toLocaleString("en-NG", { timeZone: "Africa/Lagos" })}`,
+      "",
+      "PORTFOLIO SUMMARY",
+      "",
+      `Total Portfolio Emissions,${formatNumber(portfolioTotal)},tCO₂e`,
+      `Scope 1 Total,${formatNumber(portfolioScope1)},tCO₂e`,
+      `Scope 2 Total,${formatNumber(portfolioScope2)},tCO₂e`,
+      `Scope 3 Total,${formatNumber(portfolioScope3)},tCO₂e`,
+      `Baseline Emissions (2023),${formatNumber(portfolioBaseline)},tCO₂e`,
+      `Target Emissions (2030),${formatNumber(portfolioTarget)},tCO₂e`,
+      `Current Progress,${Math.round(Math.max(0, Math.min(100, portfolioProgress)))},%`,
+      `Reduction from Baseline,${((portfolioBaseline - portfolioTotal) / portfolioBaseline * 100).toFixed(1)},%`,
+      "",
+      "",
+      "PROJECT-LEVEL CARBON DATA",
+      "",
+    ];
+
+    // Column Headers
+    const headers = [
+      "Project ID",
+      "Project Name",
+      "Sector",
+      "Scope 1 (tCO₂e)",
+      "Scope 2 (tCO₂e)",
+      "Scope 3 (tCO₂e)",
+      "Total Emissions (tCO₂e)",
+      "Baseline Year",
+      "Baseline Emissions (tCO₂e)",
+      "Target Year",
+      "Target Reduction (%)",
+      "Current Progress (%)",
+      "Status",
+      "Reduction from Baseline (%)"
+    ];
+
+    // Convert project data to CSV rows
+    const csvRows = filteredData.map((project) => {
+      const reductionPercent = ((project.baselineEmissions - project.total) / project.baselineEmissions * 100).toFixed(1);
+      
+      return [
+        project.projectId,
+        project.projectName,
+        project.sector,
+        formatNumber(project.scope1),
+        formatNumber(project.scope2),
+        formatNumber(project.scope3),
+        formatNumber(project.total),
+        project.baselineYear.toString(),
+        formatNumber(project.baselineEmissions),
+        project.targetYear.toString(),
+        project.targetReduction.toString(),
+        project.currentProgress.toString(),
+        project.status,
+        reductionPercent
+      ];
+    });
+
+    // Escape CSV cells (handle commas, quotes, newlines)
+    const escapeCSVCell = (cell: string | number) => {
+      const cellValue = String(cell || "");
+      if (cellValue.includes(",") || cellValue.includes('"') || cellValue.includes("\n")) {
+        return `"${cellValue.replace(/"/g, '""')}"`;
+      }
+      return cellValue;
+    };
+
+    // Combine all sections
+    const csvContent = [
+      ...reportHeader.map(line => line),
+      headers.map(escapeCSVCell).join(","),
+      ...csvRows.map(row => row.map(escapeCSVCell).join(",")),
+      "",
+      "",
+      "EMISSION CALCULATION LOGIC",
+      "",
+      "Scope 1: Direct emissions from owned or controlled sources",
+      "Formula: Activity Data × Emission Factor = tCO₂e",
+      "",
+      "Scope 2: Indirect emissions from purchased energy",
+      "Formula: Energy Consumption × Grid Emission Factor = tCO₂e",
+      "",
+      "Scope 3: Indirect emissions from value chain",
+      "Formula: Activity Data × Value Chain Emission Factor = tCO₂e"
+    ].join("\n");
+
+    // Create blob and trigger download
+    const blob = new Blob([BOM + csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    
+    const today = new Date().toISOString().split('T')[0];
+    link.setAttribute("href", url);
+    link.setAttribute("download", `DBN_Carbon_NetZero_Report_${today}.csv`);
+    link.style.visibility = "hidden";
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="col-12">
       <div style={{ marginBottom: "24px" }}>
         <h1 className="view-title">Carbon & Net Zero Tracking</h1>
-        <p style={{ color: "#666", marginTop: "8px" }}>
+        <p style={{ color: "#0f172a", marginTop: "8px", fontWeight: 400 }}>
           Portfolio and project-level carbon accounting and Net Zero target tracking
         </p>
       </div>
@@ -325,7 +594,7 @@ export const CarbonNetZero: React.FC = () => {
                 }}
                 status={portfolioProgress > 50 ? "active" : "normal"}
               />
-              <div style={{ marginTop: "8px", fontSize: "12px", color: "#666" }}>
+              <div style={{ marginTop: "8px", fontSize: "12px", color: "#334155" }}>
                 {((portfolioBaseline - portfolioTotal) / portfolioBaseline * 100).toFixed(1)}% reduction from baseline
               </div>
             </div>
@@ -339,7 +608,7 @@ export const CarbonNetZero: React.FC = () => {
           <Col xs={{ span: 24 }} lg={{ span: 8 }}>
             <div>
               <strong>Scope 1:</strong> Direct emissions from owned or controlled sources
-              <div style={{ marginTop: "4px", fontSize: "12px", color: "#666" }}>
+              <div style={{ marginTop: "4px", fontSize: "12px", color: "#334155" }}>
                 Formula: Activity Data × Emission Factor = tCO₂e
               </div>
             </div>
@@ -347,7 +616,7 @@ export const CarbonNetZero: React.FC = () => {
           <Col xs={{ span: 24 }} lg={{ span: 8 }}>
             <div>
               <strong>Scope 2:</strong> Indirect emissions from purchased energy
-              <div style={{ marginTop: "4px", fontSize: "12px", color: "#666" }}>
+              <div style={{ marginTop: "4px", fontSize: "12px", color: "#334155" }}>
                 Formula: Energy Consumption × Grid Emission Factor = tCO₂e
               </div>
             </div>
@@ -355,7 +624,7 @@ export const CarbonNetZero: React.FC = () => {
           <Col xs={{ span: 24 }} lg={{ span: 8 }}>
             <div>
               <strong>Scope 3:</strong> Indirect emissions from value chain
-              <div style={{ marginTop: "4px", fontSize: "12px", color: "#666" }}>
+              <div style={{ marginTop: "4px", fontSize: "12px", color: "#334155" }}>
                 Formula: Activity Data × Value Chain Emission Factor = tCO₂e
               </div>
             </div>
@@ -376,12 +645,7 @@ export const CarbonNetZero: React.FC = () => {
             htmlType="button"
             className="btn-outline"
             style={{ width: "100%" }}
-            onClick={() => {
-              // Simulate export
-              console.log("Exporting Carbon & Net Zero Summary...");
-              // In real app, this would trigger actual PDF export
-              alert("Exporting Carbon & Net Zero Summary as PDF...\n\nThis would download the report in a real application.");
-            }}
+            onClick={exportCarbonReport}
           >
             <DownloadOutlined style={{ marginRight: "8px" }} /> Export Carbon Report
           </ButtonComponent>

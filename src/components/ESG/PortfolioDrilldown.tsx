@@ -23,7 +23,7 @@ interface ProjectData {
   dataQualityScore: number;
 }
 
-// Mock Project Data
+// Mock Project Data - Comprehensive and Consistent Dataset
 const mockProjects: ProjectData[] = [
   {
     key: "1",
@@ -127,6 +127,159 @@ const mockProjects: ProjectData[] = [
     carbonScope3: "Y",
     dataQualityScore: 89,
   },
+  {
+    key: "7",
+    projectId: "PROJ-2024-007",
+    pfiName: "Ibadan Wind Energy Project",
+    sector: "Renewable Energy",
+    location: "Oyo State",
+    amount: 2200000000,
+    startDate: "2024-02-01",
+    endDate: "2026-06-30",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    esgRAG: "green",
+    carbonScope1: "Y",
+    carbonScope2: "Y",
+    carbonScope3: "Y",
+    dataQualityScore: 93,
+  },
+  {
+    key: "8",
+    projectId: "PROJ-2024-008",
+    pfiName: "Benin City Water Supply Upgrade",
+    sector: "Water & Sanitation",
+    location: "Edo State",
+    amount: 1450000000,
+    startDate: "2024-03-15",
+    endDate: "2025-09-30",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    esgRAG: "green",
+    carbonScope1: "Y",
+    carbonScope2: "Y",
+    carbonScope3: "N",
+    dataQualityScore: 87,
+  },
+  {
+    key: "9",
+    projectId: "PROJ-2024-009",
+    pfiName: "Warri Refinery Modernization",
+    sector: "Oil & Gas",
+    location: "Delta State",
+    amount: 5200000000,
+    startDate: "2024-01-20",
+    endDate: "2027-12-31",
+    taxonomyStatus: "Transition",
+    esgStatus: "Incomplete",
+    esgRAG: "amber",
+    carbonScope1: "Y",
+    carbonScope2: "Y",
+    carbonScope3: "Y",
+    dataQualityScore: 68,
+  },
+  {
+    key: "10",
+    projectId: "PROJ-2024-010",
+    pfiName: "Lagos BRT System Expansion",
+    sector: "Transportation",
+    location: "Lagos State",
+    amount: 2800000000,
+    startDate: "2024-04-10",
+    endDate: "2026-10-31",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    esgRAG: "green",
+    carbonScope1: "Y",
+    carbonScope2: "Y",
+    carbonScope3: "Y",
+    dataQualityScore: 91,
+  },
+  {
+    key: "11",
+    projectId: "PROJ-2024-011",
+    pfiName: "Kano Gas Power Station",
+    sector: "Energy",
+    location: "Kano State",
+    amount: 3500000000,
+    startDate: "2024-02-15",
+    endDate: "2026-05-31",
+    taxonomyStatus: "Transition",
+    esgStatus: "Incomplete",
+    esgRAG: "amber",
+    carbonScope1: "Y",
+    carbonScope2: "Y",
+    carbonScope3: "N",
+    dataQualityScore: 75,
+  },
+  {
+    key: "12",
+    projectId: "PROJ-2024-012",
+    pfiName: "Port Harcourt Recycling Plant",
+    sector: "Waste Management",
+    location: "Rivers State",
+    amount: 1200000000,
+    startDate: "2024-05-05",
+    endDate: "2025-11-30",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    esgRAG: "green",
+    carbonScope1: "Y",
+    carbonScope2: "Y",
+    carbonScope3: "Y",
+    dataQualityScore: 90,
+  },
+  {
+    key: "13",
+    projectId: "PROJ-2024-013",
+    pfiName: "Jos Solar Microgrid",
+    sector: "Renewable Energy",
+    location: "Plateau State",
+    amount: 850000000,
+    startDate: "2024-06-01",
+    endDate: "2025-12-31",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    esgRAG: "green",
+    carbonScope1: "Y",
+    carbonScope2: "Y",
+    carbonScope3: "Y",
+    dataQualityScore: 94,
+  },
+  {
+    key: "14",
+    projectId: "PROJ-2024-014",
+    pfiName: "Calabar Industrial Waste Treatment",
+    sector: "Waste Management",
+    location: "Cross River State",
+    amount: 1650000000,
+    startDate: "2024-04-20",
+    endDate: "2026-02-28",
+    taxonomyStatus: "Green",
+    esgStatus: "Complete",
+    esgRAG: "green",
+    carbonScope1: "Y",
+    carbonScope2: "Y",
+    carbonScope3: "Y",
+    dataQualityScore: 86,
+  },
+  {
+    key: "15",
+    projectId: "PROJ-2024-015",
+    pfiName: "Kaduna Oil Refinery Expansion",
+    sector: "Oil & Gas",
+    location: "Kaduna State",
+    amount: 4800000000,
+    startDate: "2024-03-10",
+    endDate: "2027-08-31",
+    taxonomyStatus: "Not Green",
+    esgStatus: "Incomplete",
+    esgRAG: "red",
+    carbonScope1: "Y",
+    carbonScope2: "N",
+    carbonScope3: "N",
+    dataQualityScore: 52,
+  },
 ];
 
 export const PortfolioDrilldown: React.FC = () => {
@@ -203,6 +356,74 @@ export const PortfolioDrilldown: React.FC = () => {
       default:
         return "default";
     }
+  };
+
+  const exportToExcel = () => {
+    // Prepare headers
+    const headers = [
+      "Project ID",
+      "PFI Name",
+      "Sector",
+      "Location (State)",
+      "Amount (₦)",
+      "Start Date",
+      "End Date",
+      "Taxonomy Status",
+      "ESG Status",
+      "ESG RAG Status",
+      "Carbon Scope 1",
+      "Carbon Scope 2",
+      "Carbon Scope 3",
+      "Data Quality Score (%)"
+    ];
+
+    // Convert data to CSV format
+    const csvData = filteredData.map((project) => [
+      project.projectId,
+      project.pfiName,
+      project.sector,
+      project.location,
+      formatCurrency(project.amount),
+      project.startDate,
+      project.endDate,
+      project.taxonomyStatus,
+      project.esgStatus,
+      project.esgRAG.toUpperCase(),
+      project.carbonScope1,
+      project.carbonScope2,
+      project.carbonScope3,
+      project.dataQualityScore
+    ]);
+
+    // Create CSV content with BOM for Excel UTF-8 compatibility
+    const BOM = "\uFEFF";
+    const csvContent = [
+      headers.join(","),
+      ...csvData.map(row => 
+        row.map(cell => {
+          // Escape commas and quotes in cell values
+          const cellValue = String(cell || "");
+          if (cellValue.includes(",") || cellValue.includes('"') || cellValue.includes("\n")) {
+            return `"${cellValue.replace(/"/g, '""')}"`;
+          }
+          return cellValue;
+        }).join(",")
+      )
+    ].join("\n");
+
+    // Create blob and download
+    const blob = new Blob([BOM + csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute("href", url);
+    link.setAttribute("download", `Portfolio_Drilldown_Projects_${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = "hidden";
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   const columns: ColumnsType<ProjectData> = [
@@ -321,7 +542,7 @@ export const PortfolioDrilldown: React.FC = () => {
     <div className="col-12">
       <div style={{ marginBottom: "24px" }}>
         <h1 className="view-title">Portfolio Drilldown - Projects/Facilities Register</h1>
-        <p style={{ color: "#666", marginTop: "8px" }}>
+        <p style={{ color: "#0f172a", marginTop: "8px", fontWeight: 400 }}>
           Detailed view of all projects and facilities with ESG classifications and status
         </p>
       </div>
@@ -368,8 +589,9 @@ export const PortfolioDrilldown: React.FC = () => {
             htmlType="button"
             className="updateButton"
             style={{ width: "100%" }}
+            onClick={exportToExcel}
           >
-            <DownloadOutlined style={{ marginRight: "8px" }} /> Export
+            <DownloadOutlined style={{ marginRight: "8px" }} /> Export Excel
           </ButtonComponent>
         </Col>
       </Row>

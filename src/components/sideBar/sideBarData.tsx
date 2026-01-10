@@ -4,8 +4,8 @@ import {
   AppstoreOutlined,
   FileDoneOutlined,
   SolutionOutlined,
+  RightOutlined,
   DownOutlined,
-  UpOutlined,
   AimOutlined,
   SelectOutlined,
   UserAddOutlined,
@@ -27,8 +27,8 @@ const SidebarData = [
     title: "Projects / Facilities",
     path: "/app/programme",
     icon: <FileDoneOutlined />,
-    iconClosed: <DownOutlined />,
-    iconOpened: <UpOutlined />,
+    iconClosed: <RightOutlined style={{ fontSize: '11px', transition: 'transform 0.2s ease' }} />,
+    iconOpened: <DownOutlined style={{ fontSize: '11px', transition: 'transform 0.2s ease' }} />,
 
     subNav: [
       {
@@ -59,8 +59,8 @@ const SidebarData = [
     title: "PFI Submissions",
     path: "/app/form",
     icon: <SolutionOutlined />,
-    iconClosed: <DownOutlined />,
-    iconOpened: <UpOutlined />,
+    iconClosed: <RightOutlined style={{ fontSize: '11px', transition: 'transform 0.2s ease' }} />,
+    iconOpened: <DownOutlined style={{ fontSize: '11px', transition: 'transform 0.2s ease' }} />,
 
     subNav: [
       {
