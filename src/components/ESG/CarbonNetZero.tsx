@@ -376,6 +376,12 @@ export const CarbonNetZero: React.FC = () => {
             htmlType="button"
             className="btn-outline"
             style={{ width: "100%" }}
+            onClick={() => {
+              // Simulate export
+              console.log("Exporting Carbon & Net Zero Summary...");
+              // In real app, this would trigger actual PDF export
+              alert("Exporting Carbon & Net Zero Summary as PDF...\n\nThis would download the report in a real application.");
+            }}
           >
             <DownloadOutlined style={{ marginRight: "8px" }} /> Export Carbon Report
           </ButtonComponent>
