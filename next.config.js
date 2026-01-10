@@ -1,6 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['antd', 'rc-util', 'rc-pagination', 'rc-picker', '@ant-design/icons'],
+  transpilePackages: [
+    'antd',
+    'rc-util',
+    'rc-pagination',
+    'rc-picker',
+    'rc-table',
+    'rc-tree',
+    'rc-tree-select',
+    'rc-select',
+    'rc-dropdown',
+    'rc-menu',
+    'rc-drawer',
+    'rc-dialog',
+    'rc-form',
+    'rc-field-form',
+    '@ant-design/icons',
+  ],
   async headers() {
     return [
       {
