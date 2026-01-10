@@ -18,8 +18,6 @@ const nextConfig = {
     '@ant-design/icons',
     '@ant-design/icons-svg',
   ],
-  // Exclude src/pages from being treated as Pages Router
-  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   async headers() {
     return [
       {
