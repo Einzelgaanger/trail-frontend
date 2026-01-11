@@ -1,5 +1,11 @@
 import React from "react";
-import Overview from "@/pages/Overview/Overview";
+import dynamic from "next/dynamic";
+
+// Lazy load the Overview component
+const Overview = dynamic(() => import("@/pages/Overview/Overview"), {
+  ssr: true,
+  loading: () => <div className="loading-spinner">Loading dashboard...</div>,
+});
 
 const Dashboard = () => {
   return (

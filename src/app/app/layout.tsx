@@ -1,13 +1,21 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/index.scss";
-import Header from "@/components/header";
-
+import dynamic from "next/dynamic";
 import { ThemeProvider } from "@/Theme/ThemeProvider";
-
 import StyledComponentsRegistry from "@/lib/AntdRegistry";
-import SideBar from "@/components/sideBar";
-import FooterPage from "@/components/Footer/Footer";
+
+// Dynamic imports for heavy components to improve initial load time
+const Header = dynamic(() => import("@/components/header"), {
+  ssr: true,
+});
+const SideBar = dynamic(() => import("@/components/sideBar"), {
+  ssr: true,
+});
+const FooterPage = dynamic(() => import("@/components/Footer/Footer"), {
+  ssr: true,
+});
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

@@ -1329,16 +1329,20 @@
   .new-sidebar-nav {
     align-items: center;
     overflow: hidden;
+    height: calc(100vh - 73px);
+    position: fixed;
+    width: 270px;
 
     .sidebar-nav-container {
       display: flex;
       flex-direction: column;
-      height: calc(100% - 60px);
+      height: 100%;
       width: 100%;
       margin-top: 20px;
       overflow-y: auto;
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
+      padding-bottom: 20px;
       .org-switch-container {
         margin: 1rem;
       }

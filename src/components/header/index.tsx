@@ -4,6 +4,7 @@ import { Drawer, Dropdown, Avatar, Switch } from "antd";
 import { MenuFoldOutlined, UserOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import logo_black from "../../../public/assets/logo_black.png";
 import logo_white from "../../../public/assets/logo_white.png";
@@ -16,6 +17,7 @@ import { ThemeContext } from "@/Theme/ThemeProvider";
 const Header = () => {
   const { theme, switchDark, switchLight } = useContext<any>(ThemeContext);
   const [visible, setVisible] = useState<boolean>(false);
+  const router = useRouter();
 
   //Modal properties
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -54,7 +56,9 @@ const Header = () => {
     setVisible(false);
   };
   const onLogout = () => {
-    console.log("logout");
+    // Clear any auth tokens or session data here if needed
+    console.log("Logging out...");
+    router.push("/");
   };
   const onDashboardClick = () => {
     console.log("Clicked");
